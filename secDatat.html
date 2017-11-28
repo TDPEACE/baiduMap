@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>找铅网大数据展示</title>
+    <link rel="stylesheet" href="css/secData.css">
+    <script src="libs/jquery.js"></script>
+    <script src="libs/angular.js"></script>
+    <script src="libs/echarts.js"></script>
+    <script src="js/secData.js"></script>
+    <!--//引入日期控件-->
+    <script src="laydate/laydate.js"></script>
+    <!--<script src="js/house.js"></script>-->
+</head>
+<body ng-controller="secData">
+    <div class="all_data">
+        <!--一共降数据区域分为三大块左中右。这是左边区域-->
+        <div class="left_data">
+            <div class="left_top">
+
+                    <div class="lt_one">
+                        <p class="top_Einfo"><span class="dian"></span>[资质商列表]</p>
+                        <div id="aptitude_list">
+                            <section class="vMap_con2_order" id="vtype">
+                                <!--<span>类型</span>-->
+                                <ul>
+                                </ul>
+                            </section>
+                            <section class="vMap_con2_order" id="vshop">
+                                <!--<span>店名</span>-->
+                                <ul>
+                                </ul>
+                            </section>
+                            <section class="vMap_con2_order" id="vton">
+                                <!--<span>重量</span>-->
+                                <ul>
+                                </ul>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="lt_two">
+                        <div class="lt_twoleft">
+                            <p class="top_Einfo"><span class="dian"></span>[数据分类检索]</p>
+                            <p class="blue_info"><span id="dian"></span>资质商汇总数据</p>
+                            <div id="data_search">
+
+                            </div>
+                        </div>
+                        <div class="area_list">
+                            <ul>
+                                <li>
+                                    <select name="" id="nation">
+                                        <option value ="volvo">省（全部）</option>
+                                        <option value ="saab">广东</option>
+                                        <option value="opel">河北</option>
+                                        <option value="audi">河南</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <select name="" id="city">
+                                        <option value ="volvo">市（全部）</option>
+                                        <option value ="saab">北京</option>
+                                        <option value="opel">深圳</option>
+                                        <option value="audi">广东</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <select name="" id="county">
+                                        <option value ="volvo">区/县（全部）</option>
+                                        <option value ="saab">息县</option>
+                                        <option value="opel">张平县</option>
+                                        <option value="audi">herf</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <select name="" id="towns">
+                                        <option value ="volvo">乡/镇（全部）</option>
+                                        <option value ="saab">Saab</option>
+                                        <option value="opel">Opel</option>
+                                        <option value="audi">Audi</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <select name="" id="village">
+                                        <option value ="volvo">村（全部）</option>
+                                        <option value ="saab">放入村</option>
+                                        <option value="opel">的非村</option>
+                                        <option value="audi">得分村</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+            </div>
+            <div class="left_center">
+
+                <div class="lc_left">
+                    <p class="top_Einfo"><span class="dian"></span>[数据分类检索]</p>
+                    <ul>
+                        <li>
+                            <p >信阳仓库</p>
+                            <div id="warehouse_A">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_B">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_C">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_D">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_E">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_F">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_G">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_H">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_I">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_J">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_K">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_L">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_M">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_N">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_O">
+
+                            </div>
+                        </li>
+                        <li>
+                            <p>信阳仓库</p>
+                            <div id="warehouse_P">
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lc_right">
+                    <div class="lcr_userStyle">
+                        <p class="top_Einfo"><span class="dian"></span>[用户类型]</p>
+                        <div class="triangle">
+
+                        </div>
+                        <div id="userStyle">
+
+                        </div>
+                    </div>
+                    <div class="lcr_rank">
+                        <p class="top_Einfo"><span class="dian"></span>[地推排名]</p>
+                        <div id="rank">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="left_bottom">
+                <div class="lb_top">
+                    <p class="top_Einfo"><span class="dian"></span>[关键运营数据]</p>
+                    <div id="operationData">
+
+                    </div>
+                </div>
+                <div class="lb_bottom">
+                    <section class="vMap_con2_order2" id="vtype2">
+                        <span>订单号</span>
+                        <ul>
+                        </ul>
+                    </section>
+                    <section class="vMap_con2_order2 ORDER2" id="vshop2">
+                        <span>重量</span>
+                        <ul>
+                        </ul>
+                    </section>
+                    <section class="vMap_con2_order2 ORDER2" id="vton2">
+                        <span>金额</span>
+                        <ul>
+                        </ul>
+                    </section>
+                    <section class="vMap_con2_order2" id="vtel2">
+                        <span>用户手机</span>
+                        <ul>
+                        </ul>
+                    </section>
+                    <section class="vMap_con2_order2" id="urecive2">
+                        <span>回收员</span>
+                        <ul>
+                        </ul>
+                    </section>
+                    <section class="vMap_con2_order2" id="utime2">
+                        <span>订单时间</span>
+                        <ul>
+                        </ul>
+                    </section>
+                    <section class="vMap_con2_order2" id="uqualify">
+                        <span>所属资质商</span>
+                        <ul>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--中间区域-->
+        <div class="center_data">
+            <div id="test1">
+
+            </div>
+            <div class="center_bottom">
+                <p class="top_Einfo"><span class="dian"></span>[关键运营数据]</p>
+               <!-- <ul>
+                    <li class="RFM" id="Cbone"></li>
+                    <li class="RFM" id="CBtwo"></li>
+                    <li class="RFM" id="CBthree"></li>
+                    <li class="RFM" id="CBfour"></li>
+                </ul>-->
+                <div class="RFM" >
+                    <p class="RFM_topinfo">最后一次下单距今时长（客户数）</p>
+                    <div id="customers">
+
+                    </div>
+                </div>
+                <div class="RFM" >
+                    <p class="RFM_topinfo">最近30天不同回收频率的客户数</p>
+                    <div id="customers_num">
+
+                    </div>
+                </div>
+                <div class="RFM" >
+                    <p class="RFM_topinfo">最近30天客户下单次数</p>
+                    <div id="customers_chi">
+
+                    </div>
+                </div>
+                <div class="RFM" >
+                    <p class="RFM_topinfo">各价格下单量</p>
+                    <div id="customers_price">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--右边区域-->
+        <div class="right_data">
+            <p class="rd_topinfo"></p>
+            <div class="rd_center">
+                <p class="top_Einfo"><span class="dian"></span>[最近40天下单用户及店铺推广数据趋势]</p>
+                <div class="center_Einfo">
+                    <div class="c_info"><span class="cricle"></span>加权平均回收价</div>
+                    <div class="c_info c_info2"> <span class="cricle blue_info2"></span> 回收总重量</div>
+                </div>
+                <div id="place_order">
+
+                </div>
+                <div class="center_Einfo">
+                    <!--<div class="c_info"><span class="cricle"></span>加权平均回收价</div>-->
+                    <div class="c_info c_info2"> <span class="cricle blue_info2"></span> 仓库库存总重量</div>
+
+                </div>
+                <div id="warehouse_weight">
+
+                </div>
+            </div>
+            <div class="rd_bottom">
+                <ul>
+                    <li>
+                        <p class="top_Einfo"><span class="dian"></span>[下单量与收单量对比图]</p>
+                        <div class="c_info c_info2"> <span class="cricle blue_info2"></span> 散点分布图</div>
+                        <div id="splashes">
+
+                        </div>
+                    </li>
+                    <li>
+                        <p class="top_Einfo"><span class="dian"></span>[订单基本数据一]</p>
+                        <div id="recyle">
+
+                        </div>
+                        <div id="cancle">
+
+                        </div>
+                        <!--右边的客单价-->
+                        <span id="line"></span>
+                        <div id="Guest">
+                            客单价
+                           <p id="Guest_num">8602</p>
+                            <div class="Guest_btm">
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mrt">
+                        <p class="top_Einfo"><span class="dian"></span>[揽收及时性统计]</p>
+                        <div class="c_info green_info"><span class="cricle"></span>及时</div>
+                        <div class="c_info c_info2 red_info"> <span class="cricle blue_info"></span> 不及时</div>
+                        <div id="express">
+
+                        </div>
+                    </li>
+                    <!--/*订单基本数据二，物流信息*/-->
+                    <li class="mrt">
+                        <p class="top_Einfo"><span class="dian"></span>[订单基本数据二]</p>
+                        <div class="c_info c_info2"> <span class="cricle blue_info2"></span> 物流回收统计：每车次</div>
+                        <div id="logistics">
+
+                        </div>
+                        <span id="line0"></span>
+                        <div class="logistics_info">
+
+                            <div id="logistics_top">
+                                <p class="log_inforight">回收总量(吨)</p>
+                                9527
+                            </div>
+                            <div id="logistics_bottom">
+                                <p class="log_inforight">付款总额(万)</p>
+                                9258
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="mrt">
+                        <div class="mrt_left">
+                            <ul>
+                                <li class="same_radio">选择</li>
+                                <li class="same_radio">切换</li>
+                                <li class="different"><span class="radio_position radio_p2">上</span><span class="radio_position">下</span></li>
+                                <li class="different"><span class="radio_position radio_p2">左</span><span class="radio_position">右</span></li>
+                                <li class="same_radio">放大</li>
+                                <li class="same_radio">缩小</li>
+                                <li class="same_radio">静音</li>
+                            </ul>
+
+
+                        </div>
+                        <div id="radio">
+                            <div class="radio"></div>
+                            <div class="radio"></div>
+                            <div class="radio"></div>
+                            <div class="radio"></div>
+                        </div>
+                    </li>
+                    <li class="mrt">
+
+                            <video id="cam"  autoplay >
+                                Your browser does not support HTML5 video.
+                                <source src="img/vmap/cam/1.mp4" type="video/mp4">
+
+                            </video>
+
+                        <div class="mrt_radioinfo">
+                            <ul>
+                                <li>订单号:<br> <span>LDP2017456321</span></li>
+                                <li>重量:<br>  <span>258kg</span></li>
+                                <li>金额: <br> <span>3000元</span></li>
+                                <li>回收员: <br> <span>1356235689</span></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        laydate.render({
+            elem: '#test1'
+        ,position: 'absolute'
+            ,change: function(value, date){ //监听日期被切换
+                lay('#testView').html(value);
+            }
+        });
+    </script>
+</body>
+
+</html>

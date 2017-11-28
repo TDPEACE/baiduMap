@@ -1,0 +1,394 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+        #allmap{height:500px;width:100%;}
+        #allmap0{height:800px;width:800px;}
+        #r-result{width:100%; font-size:14px;}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=S2XBCnEYouwQYSpqxcpX2BP1"></script>
+    <script type="text/javascript" src="libs/echarts.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script src="libs/jquery.js"></script>
+    <script src="libs/MarkerClusterer.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <title>城市名定位</title>
+</head>
+<body>
+<div id="allmap"></div>
+<div id="r-result">
+    经度: <input id="longitude" type="text" style="width:100px; margin-right:10px;" />
+    纬度: <input id="latitude" type="text" style="width:100px; margin-right:10px;" />
+    <input type="button" value="查询" onclick="theLocation()" />
+</div>
+<div id="allmap0">
+
+</div>
+<div>
+
+</div>
+</body>
+</html>
+<script type="text/javascript">
+
+//    var myChart = echarts.init(document.getElementById('allmap0'));
+//
+//    var myData = [
+//
+//        {name: '海门', value: [121.15, 31.89, ]},
+//        {name: '鄂尔多斯', value: [109.781327, 39.608266,]},
+//        {name: '招远', value: [120.38, 37.35, ]},
+//        {name: '舟山', value: [122.207216, 29.985295, ]},
+//        {name:'沈阳',value:[123.38,41.8]},
+//        {name:'苏州',value:[120.62,31.32]},
+//        {name:'茂名',value:[110.88,21.68]},
+//        {name:'嘉兴',value:[120.76,30.77]},
+//        {name:'长春',value:[125.35,43.88]},
+//        {name:'胶州',value:[120.03336,36.264622]},
+//        {name:'银川',value:[106.27,38.47]},
+//        {name:'张家港',value:[120.555821,31.875428]},
+//
+//    ]
+//
+//    option = {
+//        bmap: {
+//            center: [116.331398, 39.897445], // 中心位置坐标
+//            zoom: 11, // 地图缩放比例
+//            roam: true // 开启用户缩放
+//        },
+////        visualMap: {	// 视觉映射组件
+////            //type: 'continuous',
+////            min: 0,
+////            max: 200,
+////            calculable: true,
+////            inRange: {
+////                color: ['#50a3ba','#eac736','#d94e5d']
+////            },
+////            textStyle: {
+////                color: '#fff'
+////            }
+////        },
+//        series: [
+//            {
+//                name: '销量',
+//                type: 'scatter',
+//                coordinateSystem: 'bmap', // 坐标系使用bmap
+//                data: myData
+//            }
+//        ]
+//    };
+//    myChart.setOption(option);
+
+// 百度地图API功能
+//myChart.getModel().getComponent("allmap").getBMap();
+var map = new BMap.Map("allmap");
+map.centerAndZoom(new BMap.Point(116.331398,39.897445),11);
+map.enableScrollWheelZoom(true);
+// 编写自定义函数,创建标注
+
+
+
+
+
+    var data = [
+
+        {custId: 73, custName: "吕军强", custPhone: "15511097555", mapX: 116.203169, mapY: 33.503044},
+
+{custId: 112, custName: "朱先生", custPhone: "13665750629", mapX: 119.50682067871094, mapY: 32.83403015136719,},
+
+{custId: 120, custName: "徐光", custPhone: "15956735789", mapX: 115.79464721679688, mapY: 33.867252349853516, },
+
+{custId: 149, custName: "、、、、、", custPhone: "13966894586", mapX: 116.2229232788086, mapY: 33.51033020019531},
+
+{custId: 247, custName: "来咯努力", custPhone: "15989350163", mapX: 114.03251647949219, mapY: 22.545787811279297},
+
+{custId: 248, custName: "吴军小号", custPhone: "18677702861", mapX: 114.06571197509766, mapY: 22.51181983947754},
+
+{custId: 252, custName: "小沈", custPhone: "18071268478", mapX: 114.06693267822266, mapY: 22.511436462402344},
+
+{custId: 253, custName: "潘洪飞", custPhone: "18355847011", mapX: 116.24025, mapY: 33.484709},
+
+{custId: 254, custName: "Matt", custPhone: "13612974065", mapX: 114.06629180908203, mapY: 22.511018753051758},
+{custId: 267, custName: "张志炬", custPhone: "15919425804", mapX: 114.06602478027344, mapY: 22.511707305908203},
+
+{custId: 592, custName: "刘军", custPhone: "13802222761", mapX: 114.06844329833984, mapY: 22.5400447845459},
+
+{custId: 606, custName: "吴存柏无", custPhone: "18124027305", mapX: 114.060842, mapY: 22.516758},
+
+{custId: 776, custName: "曾稀贤", custPhone: "13928650209", mapX: 119.506820678711, mapY: 32.8340301513672},
+
+{custId: 785, custName: "刘文豪", custPhone: "13213202881", mapX: 119.018996, mapY: 33.598423},
+
+{custId: 796, custName: "张必勇", custPhone: "13615154000", mapX: 120.51983642578125, mapY: 31.279788970947266},
+
+{custId: 798, custName: "翟显彪", custPhone: "13823165796", mapX: 113.86457824707031, mapY: 22.802602767944336},
+
+{custId: 802, custName: "崔建彬", custPhone: "13715293963", mapX:114.06568908691406, mapY: 22.511577606201172},
+
+{custId: 844, custName: "韩飞", custPhone: "13856869119", mapX: 116.20048522949219, mapY: 33.13285446166992}
+
+
+    ];
+
+
+
+var MAX = 10;
+var markers = [];
+//var marker=[];
+//var point = null;
+var i = 0;
+for (; i < data.length; i++) {
+  var  point = new BMap.Point(data[i].mapX, data[i].mapY,);
+   // markers = new BMap.Marker(point); //按照地图点坐标生成标记
+    markers.push(new BMap.Marker(point));
+    map.addOverlay(markers);
+
+   /*  point = new BMap.Point(data[i].mapX, data[i].mapY); //循环生成新的地图点
+     marker = new BMap.Marker(point); //按照地图点坐标生成标记
+
+
+     */
+
+}
+//最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
+var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
+
+
+// 百度地图API功能
+/*var map = new BMap.Map("allmap");
+map.centerAndZoom(new BMap.Point(116.404, 39.915), 5);
+map.enableScrollWheelZoom();
+
+
+
+var markers = [];
+var pt = null;
+var i = 0;
+for (; i < data.length; i++) {
+    pt = new BMap.Point(data[i].mapX,data[i].mapY);
+    markers.push(new BMap.Marker(pt));
+}
+//最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
+var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
+
+
+function fn_test2() {
+    markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
+}
+fn_test2()*/
+
+
+
+
+
+/*
+var opts = {
+    width : 250,     // 信息窗口宽度
+    height: 80,     // 信息窗口高度
+    title : "信息窗口" , // 信息窗口标题
+    enableMessage:true//设置允许信息窗发送短息
+};
+
+var myIcon = new BMap.Icon("/images/home/stroe2.png", new BMap.Size(100, 100), {
+    anchor: new BMap.Size(10, 10),				//这里是定位点距离图片左上角的偏移量。默认图片中心点作为anchor位置
+    infoWindowAnchor: new BMap.Size(10, 0)		//这里是打开info窗口的位置
+});//用于自定义图片
+
+
+    for (var i = 0; i < data.length; i++) {
+        var point = new BMap.Point(data[i].mapX, data[i].mapY); //循环生成新的地图点
+        // var marker = new BMap.Marker(new_point, { icon: myIcon });  // 创建标注
+        var markerArr = new BMap.Marker(point,); //按照地图点坐标生成标记
+        map.addOverlay(markerArr);
+        content = data[i].address
+        addClickHandler(content,markerArr);
+
+    }
+
+//点击当前点之后出现信息提示框+++++++++++
+
+
+ function addClickHandler(content,markerArr){
+            markerArr.addEventListener("click",function(e){
+						        openInfo(content,e)}
+						    );
+						}
+function openInfo(content,e){
+    var p = e.target;
+    console.log(p.getPosition())
+    var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+    var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+    map.openInfoWindow(infoWindow,point); //开启信息窗口
+}
+*/
+
+
+
+
+
+
+
+// 用经纬度设置地图中心点
+function theLocation(){
+    if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
+        map.clearOverlays();
+        var new_point = new BMap.Point(document.getElementById("longitude").value,document.getElementById("latitude").value);
+        var marker = new BMap.Marker(new_point);  // 创建标注
+        map.addOverlay(marker);              // 将标注添加到地图中
+
+        //map.removeOverlay(marker);
+        //point.push(document.getElementById("longitude").value,document.getElementById("latitude").value)
+        map.panTo(new_point);
+        map.setZoom()
+
+
+    }
+}
+//var marker = new BMap.Marker(new BMap.Point(116.404, 39.915)); // 创建点
+
+
+
+
+  /*  // 用经纬度设置地图中心点
+    function theLocation(){
+        if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
+            //var map = new BMap.Map("allmap0");
+            map.clearOverlays();
+            var new_point = new BMap.Point(document.getElementById("longitude").value,document.getElementById("latitude").value);
+            var marker = new BMap.Marker(new_point);  // 创建标注
+            map.addOverlay(marker);              // 将标注添加到地图中
+
+            map.panTo(new_point);
+            map.setZoom(15)
+            console.log(map,marker)
+
+        }
+    }*/
+
+
+
+
+
+
+
+
+
+
+//<!--地图缩放++地图移动++获取地图中心点并向后台发送请求-->
+/* map.addEventListener('dragend', function(){
+    // 你的代码
+        console.log("地图被拖动了+++++++++++++++++++++++");
+        console.log("当前地图中心点：" + map.getCenter().lng + "," + map.getCenter().lat);
+        mapY0 = map.getCenter().lng;
+        mapX0 = map.getCenter().lat;
+        initMap();
+    }) */
+/* map.addEventListener("zoomend", function () {
+    console.log("缩放结束++++","当前地图中心点：" + map.getCenter().lng + "," + map.getCenter().lat)
+    mapY0 = map.getCenter().lng;
+    mapX0 = map.getCenter().lat;
+    initMap();
+}); */
+
+
+
+
+
+
+
+
+//添加海量点+++++++++++++++++++++++++++
+
+/*if (document.createElement('canvas').getContext) {  // 判断当前浏览器是否支持绘制海量点
+    var points = [];  // 添加海量点数据
+    for (var i = 0; i < data.length; i++) {
+        points.push(new BMap.Point(data[i].mapX, data[i].mapY));
+        //markerArr.push(new Object({"point":data[i].mapX+","+data[i].mapY}));
+
+    }
+    var options = {
+        size: BMAP_POINT_SIZE_SMALL,
+        shape: BMAP_POINT_SHAPE_WATERDROP,      ///这个是点的样式目前没有发现可以自定义++
+        color: 'red'
+    }
+
+    pointCollection = new BMap.PointCollection(points, options);  // 初始化PointCollection
+
+
+
+    map.addOverlay(pointCollection);  // 添加Overlay*/
+
+
+
+//点击坐标点之后出现提示信息
+
+/*
+var opts = {
+    width : 250,     // 信息窗口宽度
+    height: 80,     // 信息窗口高度
+    title : "信息窗口" , // 信息窗口标题
+    enableMessage:true//设置允许信息窗发送短息
+};
+
+var content = data[i].address;//点击点出现的内容
+
+
+addClickHandler(content,marker);//给点添加点击事件，点渲染之后执行这个函数
+
+
+function addClickHandler(content,marker){
+    marker.addEventListener("click",function(e){
+        openInfo(content,e)}
+    );
+}
+function openInfo(content,e){
+    var p = e.target;
+    var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+    var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+    map.openInfoWindow(infoWindow,point); //开启信息窗口
+}*/
+
+
+
+
+
+
+
+
+
+
+
+var opts = {
+    width : 250,     // 信息窗口宽度
+    height: 180,     // 信息窗口高度
+    //title : "信息窗口" , // 信息窗口标题
+    enableMessage:true//设置允许信息窗发送短息
+};
+var myIcon = new BMap.Icon("/images/home/stroe2.png", new BMap.Size(100, 100), {
+    anchor: new BMap.Size(10, 10),				//这里是定位点距离图片左上角的偏移量。默认图片中心点作为anchor位置
+    infoWindowAnchor: new BMap.Size(10, 0)		//这里是打开info窗口的位置
+});//用于已接急单
+
+for(var i=0;i<data.length;i++) {
+//
+    var point = new BMap.Point(data[i].mapX, data[i].mapY); //循环生成新的地图点
+    //   marker = new BMap.Marker(point,{icon:myIcon}); //按照地图点坐标生成标记
+    marker.push(new BMap.Marker(point));
+    var content = "<div><img src=" + data[i].shopImage + "></div>" + "<p style='margin:12px;font-size:12px'>账号：" + data[i].custPhone + "<span style='font-size:12px;float:right;'>联系人：" + data[i].custName + "</span></p>" +
+        "<p style='margin:12px;font-size:12px'>店名：" + data[i].shopName + "</p><hr><p style='margin:10px;font-size:12px'>地址：" + data[i].address + "<span style='font-size:12px;float:right;'>总重量：" + data[i].totalQuantity + "</p>"
+    ;//点击点出现的内容
+
+// map.addOverlay(marker);
+
+//addClickHandler(content,marker);
+
+}
+
+
+
+
+
+
+</script>

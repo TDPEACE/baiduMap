@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>找铅网大数据展示</title>
+    <link rel="stylesheet" href="css/zhaoqian.css">
+    <script src="libs/jquery-1.9.1.js"></script>
+    <script src="libs/angular.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=S2XBCnEYouwQYSpqxcpX2BP1"></script>
+    <script src="libs/echarts.js"></script>
+    <script src="js/bmap.js"></script>
+    <script src="js/china.js"></script>
+
+
+    <!--<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>-->
+    <script src="js/dataZQW.js"></script>
+    <script src="js/vs.js"></script>
+    <!--<script src="js/scroll.js"></script>-->
+</head>
+<body    ng-controller="myEchart">
+<!--总快的大容器，背景色-->
+    <div class="container" >
+        <!--顶部小条-->
+        <div class="header_top">
+
+        </div>
+        <!--上面三个图-->
+        <div class="content">
+            <div class="top">
+                <!--头部三级联动-->
+
+                <div id="top_left">
+                    <div class="top_left">
+
+                    </div>
+                    <!--左上方信息头-->
+                    <div class="topleft_info">
+                        <div class="tl_info">
+                            <span class="map"></span>
+                            [地图要素分类检索]
+                        </div>
+                        <div class="tl_info2">
+
+                        </div>
+                    </div>
+                    <div class="section">
+                        <ul>
+                            <li>
+                                <select name="" id="nation">
+                                    <option value ="volvo">全国</option>
+                                    <option value ="saab">Saab</option>
+                                    <option value="opel">Opel</option>
+                                    <option value="audi">Audi</option>
+                                </select>
+                            </li>
+                            <li>
+                                <select name="" id="city">
+                                    <option value ="volvo">市（全部）</option>
+                                    <option value ="saab">Saab</option>
+                                    <option value="opel">Opel</option>
+                                    <option value="audi">Audi</option>
+                                </select>
+                            </li>
+                            <li>
+                                <select name="" id="county">
+                                    <option value ="volvo">区/县（全部）</option>
+                                    <option value ="saab">Saab</option>
+                                    <option value="opel">Opel</option>
+                                    <option value="audi">Audi</option>
+                                </select>
+                            </li>
+                            <li>
+                                <select name="" id="towns">
+                                    <option value ="volvo">乡/镇（全部）</option>
+                                    <option value ="saab">Saab</option>
+                                    <option value="opel">Opel</option>
+                                    <option value="audi">Audi</option>
+                                </select>
+                            </li>
+                            <li>
+                                <select name="" id="village">
+                                    <option value ="volvo">村（全部）</option>
+                                    <option value ="saab">Saab</option>
+                                    <option value="opel">Opel</option>
+                                    <option value="audi">Audi</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="section2">
+                        <ul>
+                            <il class="infodata"><img src="" alt=""><img src="" alt=""> 门店</il>
+                            <il class="infodata"><img src="" alt=""><img src="" alt="">支线物流</il>
+                            <il class="infodata"><img src="" alt=""><img src="" alt=""> 中专仓库</il>
+                            <il class="infodata"><img src="" alt=""><img src="" alt="">冶炼厂</il>
+                            <il class="infodata"><img src="" alt=""><img src="" alt=""> 订单</il>
+                            <il class="infodata padd"><img src="" alt=""><img src="" alt=""> 干线物流</il>
+                            <il class="infodata"><img src="" alt=""><img src="" alt=""> 环评仓库</il>
+                        </ul>
+                    </div>
+                    <div class="section_info">
+                        *实时数据请勿频繁操作，订单，车辆，库存情况会根据实际情况变化
+                    </div>
+                </div>
+                <!--中间两个饼状图-->
+                <div id="top_center">
+                    <div class="order_toptitle">
+                        <span class="dian"></span>
+                        [下单用户比]
+                    </div>
+                    <div id="day_order">
+
+                    </div>
+                    <div id="month_order">
+
+                    </div>
+                </div>
+                <!--最近40天用户下单情况-->
+                <!--<div></div>-->
+                <div class="top_right">
+                    <div class="order_toptitle">
+                        <span class="dian"></span>
+                        [最近40天下单用户和店铺推广数据趋势]
+                        <div class="order_tr">
+                            <div class="right_circle ">
+                                <span class="circle"></span>
+                                下单量趋势
+                            </div>
+                            <div class="right_circle right_circle0">
+                                <span class="circle circle0"></span>
+                                推广量趋势
+                            </div>
+                        </div>
+                    </div>
+                    <div id="top_right">
+
+                    </div>
+                </div>
+
+            </div>
+            <!--中间部分的echarts图-->
+            <div class="center">
+                <!--大块地图部分-->
+                <div id="center_left">
+
+                </div>
+
+                <div class="center_right">
+                    <!--右边顶部四个小图-->
+                    <div class="four_box">
+
+                        <div class="cr_top">
+                            <div class="one">
+                                <div id="one"></div>
+                                <div class="one_info">
+                                    <p class="info_range">涨跌幅度</p>
+                                    <p class="info_trend">-12</p>
+                                    <img src="img/tab-profile-active.png" alt="">
+                                </div>
+                            </div>
+                            <!--第二个图累计门店-->
+                            <div class="two ">
+                                <div class="data">
+                                    <p class="info_total">累计门店</p>
+                                    <p class="info_totalNum">32432</p>
+                                    <div id="two"></div>
+                                </div>
+
+                                <div class="one_info">
+                                    <p class="info_range">涨跌幅度</p>
+                                    <p class="info_trend">-2%</p>
+                                    <img src="img/tab-profile-active.png" alt="">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="cr_top2">
+                            <!--第三个圆环-->
+                            <div class="three">
+                                <div id="three"></div>
+                                <div class="one_info">
+                                    <p class="info_range">涨跌幅度</p>
+                                    <p class="info_trend">-12</p>
+                                    <img src="img/tab-profile-active.png" alt="">
+                                </div>
+                            </div>
+                            <div class="two two_mtop">
+                                <div class="data">
+                                    <p class="info_total">累计门店</p>
+                                    <p class="info_totalNum">32432</p>
+                                    <div id="four"></div>
+                                </div>
+
+                                <div class="one_info">
+                                    <p class="info_range">涨跌幅度</p>
+                                    <p class="info_trend">+2%</p>
+                                    <img src="img/tab-profile-active.png" alt="">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--每日订单总额-->
+                    <div class="all_sale">
+                        <div class="sale_toptitle"><span class="dian dian2"></span>[每日订单总额(万)]</div>
+                        <p class="sale_trend"><span class="red_cricle"></span>过去一周趋势图</p>
+                        <div id="all_sale">
+
+                        </div>
+                        <div class="sale_info">
+                            <p class="info_range">涨跌幅度</p>
+                            <p class="info_trend">+100</p>
+                            <img src="img/tab-profile-active.png" alt="">
+                        </div>
+                    </div>
+
+                    <!--订单总重量-->
+                    <div class="all_weight">
+                        <div class="sale_toptitle"><span class="dian dian2"></span>[每日订单总量(吨)]</div>
+                        <p class="sale_trend blue_trend"><span class="blue_cricle"></span>过去一周趋势图</p>
+                        <div id="all_weight">
+
+                        </div>
+                        <div class="sale_info">
+                            <p class="info_range">涨跌幅度</p>
+                            <p class="info_trend">+100</p>
+                            <img src="img/tab-profile-active.png" alt="">
+                        </div>
+                    </div>
+
+                    <!--底部的无缝滚动-->
+                    <div id="srcoll_btm" >
+                        <div class="slide">
+                            <section class="vMap_con2_order" id="vtype">
+                                <span>类型</span>
+                                <ul>
+                                </ul>
+                            </section>
+                            <section class="vMap_con2_order" id="vshop">
+                                <span>店名</span>
+                                <ul>
+                                </ul>
+                            </section>
+                            <section class="vMap_con2_order" id="vton">
+                                <span>重量</span>
+                                <ul>
+                                </ul>
+                            </section>
+                            <section class="vMap_con2_order" id="vasset">
+                                <span>货值</span>
+                                <ul>
+                                </ul>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

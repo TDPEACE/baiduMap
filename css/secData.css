@@ -1,0 +1,644 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+body{
+    background-color: #2F3042;
+}
+.all_data{
+    width: 99%;
+    height: 954px;
+    margin: 0 auto;
+    margin-top: 10px;
+    border: 1px solid red;
+}
+.left_data{
+    width: 40%;
+    height: 100%;
+    margin-right: 0.5%;
+    float: left;
+    border: 1px solid seashell;
+}
+
+.center_data{
+    width: 19%;
+    height: 100%;
+    margin-right: 0.5%;
+    float: left;
+    border: 1px solid sandybrown;
+}
+.right_data{
+    width: 40%;
+    height: 100%;
+    float: left;
+    border: 1px solid salmon;
+}
+
+/*对左边顶部进行控制*/
+
+.left_top{
+    width: 100%;
+    height: 20%;
+    float: left;
+    margin-right: 2%;
+    border: 1px solid #7ECEF4;
+}
+/*对左边顶部的两个div进行控制*/
+.lt_one,.lt_two{
+    width: 49%;
+    height: 100%;
+    float: left;
+    border: 1px solid springgreen;
+}
+.lt_one{
+    margin-right: 2%;
+}
+/*对左边中间部分进行控制*/
+/*先对大块进行控制*/
+.left_center{
+    width: 100%;
+    height: 39%;
+    float: left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border: 1px solid fuchsia;
+}
+.lc_left,.lc_right{
+    width: 49%;
+    height: 100%;
+    float: left;
+    border: 1px solid #F74E4F;
+}
+.lc_left{
+    margin-right: 2%;
+}
+.lcr_userStyle,.lcr_rank{
+    width: 100%;
+    height: 49%;
+    float: left;
+    border: 1px solid ivory;
+}
+.lcr_userStyle{
+    margin-bottom: 1%;
+}
+/*对底部两个div进行控制*/
+
+.left_bottom{
+    width: 100%;
+    height: 40%;
+    float: left;
+    border: 1px solid yellow;
+}
+
+.lb_top,.lb_bottom{
+    width: 100%;
+    height: 49%;
+    float: left;
+    border: 1px solid hotpink;
+}
+.lb_bottom{
+    margin-top: 1%;
+}
+
+/*对中间部分进行控制*/
+#test1{
+    width: 100%;
+    height: 20%;
+    float: left;
+    margin-bottom: 3%;
+    border: solid 1px seagreen;
+}
+.center_bottom{
+    width: 100%;
+    height: 79%;
+    float: left;
+    border:  1px solid fuchsia;
+}
+.RFM{
+    width: 100%;
+    height: 23%;
+    margin-top: 3%;
+    border: 1px solid purple;
+}
+/*d对右边数据进行控制*/
+.rd_topinfo{
+    width: 100%;
+    height: 3%;
+    border: 1px solid white;
+    /*position: absolute;*/
+}
+.rd_center{
+    width: 100%;
+    height: 39%;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    border: 1px solid black;
+}
+.rd_bottom{
+    width: 100%;
+    height: 56%;
+    border:  1px solid darkturquoise;
+}
+.rd_bottom ul li{
+    width: 49%;
+    height: 32%;
+    float: left;
+    border: 1px solid darkorange;
+}
+.rd_bottom ul{
+    width: 100%;
+    height: 100%;
+}
+.rd_bottom ul li:nth-of-type(odd){
+    margin-right: 2%;
+}
+
+.mrt{
+    margin-top: 1.5%;
+}
+/*//对Echarts图部分进行控制*/
+.top_Einfo{
+    width: 100%;
+    height: 25px;
+    color: white;
+    letter-spacing: 3px;
+    background-color: #373E51;
+    line-height: 25px;
+}
+.dian{
+    width: 12px;
+    height: 12px;
+    background-color: #45BFF2;
+    display: block;
+    float: left;
+    margin-top: 7px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+/*//无缝滚动*/
+/*无缝滚动*/
+.vMap_con2_order{
+    width: 22%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 12px;
+    margin-left: 20px;
+}
+.vMap_con2_order>span{
+    color: #7ECEF4;
+}
+.vMap_con2_order ul{
+    height: 220px;
+    overflow: hidden;
+}
+.vMap_con2_order li{
+    height: 28px;
+    line-height: 28px;
+}
+.vMap_con2_order:nth-of-type(2){
+    width: 34%;
+}
+#srcoll_btm{
+    width: 100%;
+    height: 194px;
+    overflow: hidden;
+    border: 1px solid red;
+
+}
+#vtype li{
+    color: white;
+}
+#vshop li{
+    color: white;
+}
+#vton li{
+    color: white;
+}
+/*#vasset li{
+    color: #798FB0;
+}*/
+/*.vmap_new{
+    color: #F74E4F !important;
+}*/
+#aptitude_list{
+    height: 80%;
+    overflow: hidden;
+}
+/*//对左上第二个图进行控制*/
+
+.lt_twoleft{
+    width: 60%;
+    height: 100%;
+    float: left;
+}
+#data_search{
+    width: 100%;
+    height: 65%;
+}
+.blue_info{
+    width: 100%;
+    height: 15%;
+    color: #45BFF2;
+}
+.blue_info span{
+    width: 10px;
+    height: 10px;
+    background-color: #45BFF2;
+    border-radius: 50%;
+    float: left;
+    display: block;
+    margin-top: 7px;
+    margin-left: 11px;
+    margin-right: 10px;
+}
+.area_list ul{
+    width: 40%;
+    height: 100%;
+    float: left;
+
+}
+.area_list ul li{
+    float: left;
+    width: 100%;
+}
+.area_list ul li select{
+    width: 100%;
+    height: 30px;
+    /* margin-left: 17px; */
+    text-indent: 10px;
+    background-color: #2F566D;
+    color: #FFCCCC;
+    margin-top: 5px;
+}
+/*//16个仓库的情况*/
+.lc_left ul li{
+    width: 25%;
+    height: 29%;
+    float: left;
+    text-align: center;
+    color: white;
+}
+.lc_left ul{
+    width: 100%;
+    height: 80%;
+}
+#warehouse_A,#warehouse_B,#warehouse_C,#warehouse_D,#warehouse_E,#warehouse_F,#warehouse_G,#warehouse_H,#warehouse_I,#warehouse_J,#warehouse_K,#warehouse_L,
+#warehouse_M,#warehouse_N,#warehouse_O,#warehouse_P{
+    width: 100%;
+    height: 80%;
+}
+
+.lc_left ul li p{
+    font-size: 12px;
+}
+/*//左边中间部分用户类型*/
+
+ #userStyle{
+    width: 63%;
+    height: 85%;
+    float: left;
+}
+.lcr_userStyle .triangle{
+    width: 50px;
+    height: 85%;
+    float: left;
+    background-color: #45BFF2;
+    border-left: 58px solid #2F3042;
+    border-right: 60px solid #2F3042;
+    border-bottom: 13px solid #2F3042;
+    border-top: 98px solid #45bff2;
+    margin-top: 8%;
+    margin-left: 3%;
+
+}
+/*左边中间地推排名*/
+
+#rank{
+    width: 100%;
+    height: 85%;
+}
+
+/*左边底部第一个关键运营数据*/
+
+#operationData{
+    width: 100%;
+    height: 85%;
+}
+
+/*//左边底部无缝滚动*/
+
+/*#vtype2 li{*/
+    /*color: white;*/
+/*}*/
+#vshop2 li{
+    color: #FF6666;
+}
+#vton2 li{
+    color: #FF6666;
+}
+.vMap_con2_order2{
+    width: 15%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    /*padding: 0.5% 0;*/
+    font-size: 12px;
+    margin-left: 1%;
+    overflow: hidden;
+
+}
+vMap_con2_order2 ul li{
+
+}
+
+.vMap_con2_order2>span{
+    color: #666666;
+}
+.vMap_con2_order2 ul{
+    height: 220px;
+    overflow: hidden;
+}
+.vMap_con2_order2 li{
+    color: #45BFF2;
+    height: 28px;
+    line-height: 28px;
+}
+
+.ORDER2{
+    width: 8%;
+}
+
+/*对中间几个部分进行控制*/
+
+.RFM_topinfo{
+    width: 100%;
+    height:16px;
+    line-height: 16px;
+    text-align: center;
+    color: #45BFF2;
+    font-size: 12px;
+    padding-top: 4px;
+    margin-bottom: 10px;
+}
+
+/*中间三个柱状图*/
+
+#customers{
+    width: 100%;
+    height: 85%;
+}
+#customers_num{
+    width: 100%;
+    height: 85%;
+}
+#customers_chi,#customers_price{
+    width: 100%;
+    height: 85%;
+}
+
+/*右边上面两个图+++++++*/
+
+.cricle{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: block;
+    float: left;
+    background-color: #BD4F4E;
+    margin: 5px 11px 0 10px;
+}
+.blue_info2{
+    background-color: #4F81BD;
+}
+.center_Einfo{
+    width: 100%;
+    height: 12px;
+}
+
+.c_info{
+    float: left;
+    margin-right: 20px;
+    font-size: 14px;
+}
+.c_info{
+    color: #BD4F4E;
+}
+.c_info2{
+    color: #4F81BD;
+}
+/*右边上面第一个堆积图*/
+#place_order{
+    width:100%;
+    height:44%;
+}
+/*第二个*/
+
+#warehouse_weight{
+    width: 100%;
+    height: 44%;
+}
+/*底部第一个*/
+
+#splashes{
+    width: 100%;
+    height: 80%;
+}
+/*订单基本数据一，回收*/
+
+#recyle,#cancle,#Guest{
+    width: 33%;
+    height: 85%;
+    float: left;
+}
+#line{
+    width:1px;
+    height: 72%;
+    display: block;
+    float: left;
+    margin: 13px auto;
+    background-color: #8C8C93;
+}
+
+
+/*客单价*/
+#Guest{
+    color: #FBC8FB;
+    text-align: center;
+    padding-top: 10%;
+    font-size: 18px;
+}
+.Guest_btm{
+    width: 75%;
+    height: 10px;
+    background-color: #8C8C93;
+    margin: 0 auto;
+
+}
+#Guest_num{
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+/*订单基本数据二，物流信息*/
+
+.logistics_info{
+    width: 33%;
+    height: 80%;
+    float: left;
+}
+
+#logistics{
+    width: 66%;
+    height: 70%;
+    float: left;
+}
+
+#line0{
+    width:1px;
+    height: 72%;
+    display: block;
+    float: left;
+    margin: -7px auto;
+    background-color: #8C8C93;
+}
+
+.log_inforight{
+    color: #97C9FC;
+    font-size: 14px;
+    text-align: center;
+}
+#logistics_top{
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    margin-bottom: 11px;
+}
+
+#logistics_bottom{
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    margin-bottom: 11px;
+}
+
+.mrt_left{
+    width: 20%;
+    height: 100%;
+    float: left;
+    margin-left: 5px;
+}
+
+.mrt_left  ul li{
+    width: 100%;
+    height: 16px;
+    margin: 5px auto;
+    color: white;
+    text-align: center;
+    line-height: 16px;
+    background-color: #169bd5;
+    border: none;
+    border-radius: 2px;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+.radio_position{
+    width: 43%;
+    height: 16px;
+    display: block;
+    float: left;
+    /*margin: 5px auto;*/
+    color: white;
+    text-align: center;
+    line-height: 16px;
+    background-color: #169bd5;
+    border: none;
+    border-radius: 2px;
+    font-size: 12px;
+}
+
+.mrt_left  ul  .different{
+    background-color: #2F3042;
+}
+.radio_p2{
+    margin-right: 14%;
+}
+
+
+#radio{
+    width: 78%;
+    height: 100%;
+    float: left;
+}
+.radio{
+    width: 50%;
+    height: 50%;
+    float: left;
+}
+
+/*底部右边的视频*/
+
+#cam{
+    width: 78%;
+    height: 100%;
+    float: left;
+
+}
+.mrt_radioinfo{
+    width: 22%;
+    height: 100%;
+    float: left;
+}
+.mrt_radioinfo ul li {
+    width: 100%;
+    height: 16%;
+    border: none;
+    color: #7ECEF4;
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-bottom: 15px;
+}
+.mrt_radioinfo ul li span{
+    color: white;
+}
+
+
+/*揽收及时性统计*/
+#express{
+    width: 100%;
+    height: 80%;
+
+}
+
+.green_info{
+    color: #9BBB59;
+}
+
+.green_info span{
+    background-color: #9BBB59;
+}
+
+
+.red_info{
+    color: #BD4F4E;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
