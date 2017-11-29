@@ -175,70 +175,86 @@
             };
     //返回有联系的点的坐标
              var SHData = [
-                 [{name:'上海',value:120},{name:'包头',value:95}],
-                 [{name:'上海',value:120},{name:'昆明',value:90}],
-                 [{name:'上海',value:120},{name:'广州',value:80}],
-                 [{name:'上海',value:120},{name:'郑州',value:70}],
-                 [{name:'上海',value:120},{name:'长春',value:60}],
-                 [{name:'上海',value:120},{name:'重庆',value:50}],
-                 [{name:'上海',value:120},{name:'长沙',value:40}],
-                 [{name:'上海',value:120},{name:'北京',value:30}],
-                 [{name:'上海',value:120},{name:'丹东',value:20}],
-                 [{name:'上海',value:120},{name:'大连',value:10}]
+                 [{name:'上海',value:120},{name:'包头',value:9}],
+                 [{name:'上海',value:120},{name:'昆明',value:9}],
+                 [{name:'上海',value:120},{name:'广州',value:180}],
+                 [{name:'上海',value:120},{name:'郑州',value:7}],
+                 [{name:'上海',value:120},{name:'长春',value:6}],
+                 [{name:'上海',value:120},{name:'重庆',value:5}],
+                 [{name:'上海',value:120},{name:'长沙',value:4}],
+                 [{name:'上海',value:120},{name:'北京',value:3}],
+                 [{name:'上海',value:120},{name:'丹东',value:2}],
+                 [{name:'上海',value:120},{name:'大连',value:1}]
              ];
 
-            var BJData = [
-                [{name:'成都'},{name:'潍坊',value:5}],
-                [{name:'潍坊'},{name:'西宁',value:5}],
-                [{name:'西宁'},{name:'温州',value:5}],
-                [{name:'温州'},{name:'东莞',value:5}],
-                [{name:'东莞'},{name:'汕头',value:5}],
-                [{name:'汕头'},{name:'福州',value:5}],
-                [{name:'福州'},{name:'连云港',value:5}],
-                [{name:'连云港'},{name:'长春',value:5}],
-                [{name:'长春'},{name:'南昌',value:5}],
-                [{name:'南昌'},{name:'咸阳',value:5}],
-                [{name:'咸阳'},{name:'廊坊',value:5}],
-                [{name:'廊坊'},{name:'沈阳',value:5}],
-                [{name:'沈阳'},{name:'西安',value:5}],
-                [{name:'西安'},{name:'南京',value:5}],
-                [{name:'南京'},{name:'连云港',value:5}],
-                [{name:'连云港'},{name:'深圳',value:5}],
-                [{name:'深圳'},{name:'泰安',value:5}],
-                [{name:'泰安'},{name:'武汉',value:5}],
-                [{name:'武汉'},{name:'昆明',value:5}],
-                [{name:'昆明'},{name:'南京',value:5}],
-                [{name:'南京'},{name:'武汉',value:5}],
-                [{name:'武汉'},{name:'烟台',value:5}],
-                [{name:'烟台'},{name:'长春',value:5}],
-                [{name:'长春'},{name:'贵阳',value:5}],
-                [{name:'贵阳'},{name:'宿迁',value:5}],
-                [{name:'宿迁'},{name:'徐州',value:5}],
-                [{name:'徐州'},{name:'丽水',value:5}],
-                [{name:'丽水'},{name:'长沙',value:5}],
-                [{name:'长沙'},{name:'沧州',value:5}],
-                [{name:'沧州'},{name:'盐城',value:5}],
-                [{name:'盐城'},{name:'宁波',value:5}],
-                [{name:'宁波'},{name:'宁波',value:5}],
-                [{name:'宁波'},{name:'泰安',value:5}],
-                [{name:'泰安'},{name:'厦门',value:5}],
-                [{name:'厦门'},{name:'保定',value:5}],
-                [{name:'保定'},{name:'宿迁',value:5}],
-                [{name:'宿迁'},{name:'深圳',value:5}],
-                [{name:'深圳'},{name:'贵阳',value:5}],
-                [{name:'贵阳'},{name:'金华',value:5}],
-                [{name:'金华'},{name:'肇庆',value:5}],
-                [{name:'肇庆'},{name:'金华',value:5}],
-                [{name:'金华'},{name:'苏州',value:5}],
-                [{name:'苏州'},{name:'东莞',value:5}],
-                [{name:'东莞'},{name:'惠州',value:5}],
-                [{name:'惠州'},{name:'邯郸',value:5}],
-                [{name:'邯郸'},{name:'玉溪',value:5}],
-                [{name:'玉溪'},{name:'中山',value:5}],
-                [{name:'中山'},{name:'乌鲁木齐',value:5}],
-                [{name:'乌鲁木齐'},{name:'廊坊',value:5}],
-                [{name:'廊坊'},{name:'廊坊',value:5}]
-            ];
+             var GZData = [
+                 [{name:'广州'},{name:'福州',value:95}],
+                 [{name:'广州'},{name:'太原',value:90}],
+                 [{name:'广州'},{name:'长春',value:80}],
+                 [{name:'广州'},{name:'重庆',value:70}],
+                 [{name:'广州'},{name:'西安',value:60}],
+                 [{name:'广州'},{name:'成都',value:50}],
+                 [{name:'广州'},{name:'常州',value:40}],
+                 [{name:'广州'},{name:'北京',value:30}],
+                 [{name:'广州'},{name:'北海',value:20}],
+                 [{name:'广州'},{name:'海口',value:10}],
+
+                 [{name:'广州'},{name:'上海',value:100}]
+             ];
+
+
+//            var BJData = [
+//                [{name:'成都'},{name:'潍坊',value:5}],
+//                [{name:'潍坊'},{name:'西宁',value:5}],
+//                [{name:'西宁'},{name:'温州',value:5}],
+//                [{name:'温州'},{name:'东莞',value:5}],
+//                [{name:'东莞'},{name:'汕头',value:5}],
+//                [{name:'汕头'},{name:'福州',value:5}],
+//                [{name:'福州'},{name:'连云港',value:5}],
+//                [{name:'连云港'},{name:'长春',value:5}],
+//                [{name:'长春'},{name:'南昌',value:5}],
+//                [{name:'南昌'},{name:'咸阳',value:5}],
+//                [{name:'咸阳'},{name:'廊坊',value:5}],
+//                [{name:'廊坊'},{name:'沈阳',value:5}],
+//                [{name:'沈阳'},{name:'西安',value:5}],
+//                [{name:'西安'},{name:'南京',value:5}],
+//                [{name:'南京'},{name:'连云港',value:5}],
+//                [{name:'连云港'},{name:'深圳',value:5}],
+//                [{name:'深圳'},{name:'泰安',value:5}],
+//                [{name:'泰安'},{name:'武汉',value:5}],
+//                [{name:'武汉'},{name:'昆明',value:5}],
+//                [{name:'昆明'},{name:'南京',value:5}],
+//                [{name:'南京'},{name:'武汉',value:5}],
+//                [{name:'武汉'},{name:'烟台',value:5}],
+//                [{name:'烟台'},{name:'长春',value:5}],
+//                [{name:'长春'},{name:'贵阳',value:5}],
+//                [{name:'贵阳'},{name:'宿迁',value:5}],
+//                [{name:'宿迁'},{name:'徐州',value:5}],
+//                [{name:'徐州'},{name:'丽水',value:5}],
+//                [{name:'丽水'},{name:'长沙',value:5}],
+//                [{name:'长沙'},{name:'沧州',value:5}],
+//                [{name:'沧州'},{name:'盐城',value:5}],
+//                [{name:'盐城'},{name:'宁波',value:5}],
+//                [{name:'宁波'},{name:'宁波',value:5}],
+//                [{name:'宁波'},{name:'泰安',value:5}],
+//                [{name:'泰安'},{name:'厦门',value:5}],
+//                [{name:'厦门'},{name:'保定',value:5}],
+//                [{name:'保定'},{name:'宿迁',value:5}],
+//                [{name:'宿迁'},{name:'深圳',value:5}],
+//                [{name:'深圳'},{name:'贵阳',value:5}],
+//                [{name:'贵阳'},{name:'金华',value:5}],
+//                [{name:'金华'},{name:'肇庆',value:5}],
+//                [{name:'肇庆'},{name:'金华',value:5}],
+//                [{name:'金华'},{name:'苏州',value:5}],
+//                [{name:'苏州'},{name:'东莞',value:5}],
+//                [{name:'东莞'},{name:'惠州',value:5}],
+//                [{name:'惠州'},{name:'邯郸',value:5}],
+//                [{name:'邯郸'},{name:'玉溪',value:5}],
+//                [{name:'玉溪'},{name:'中山',value:5}],
+//                [{name:'中山'},{name:'乌鲁木齐',value:5}],
+//                [{name:'乌鲁木齐'},{name:'廊坊',value:5}],
+//                [{name:'廊坊'},{name:'廊坊',value:5}]
+//            ];
             //首先定义所有的数据的key：value【"城市name":"坐标"】
             //然后把有联系的两个点放在一个数组里
             //执行函数convertData,传递你要链接的点进去+++
@@ -261,8 +277,8 @@
 //                    {name: "潍坊"},
 //                    {name: "西宁", value: 5}
 //                    ]
-                    var fromCoord = geoCoordMap[dataItem[0].name];      //开始点坐标
-                    var toCoord = geoCoordMap[dataItem[1].name];        //结束点坐标
+                    var toCoord = geoCoordMap[dataItem[0].name];      //开始点坐标
+                    var  fromCoord= geoCoordMap[dataItem[1].name];        //结束点坐标
                     //console.log("fromCoord",fromCoord)
                     if (fromCoord && toCoord) {
                         res.push({
@@ -277,11 +293,25 @@
             };
 
             var color = ['#a6c84c', '#ffa022', '#46bee9'];      //这里声明一个颜色数组
-            var series = [];
+           var series = [];
+
             //这里测试者是自己定义的info，鼠标放置时显示,这个数组里面可以放置多个
 //            [['北京', BJData], ['上海', SHData], ['广州', GZData]].forEach()
 
-            [['测试者', BJData],["测试上海",SHData]].forEach(function (item, i) {
+            //描绘点的数据+++++++++++++
+
+//            var moreP = [
+//
+//                {name: "海门", "value": [121.15, 31.89, 90]},
+//                {name: "鄂尔多斯", "value": [109.781327, 39.608266, 120]},
+//                {name: "招远", "value": [120.38, 37.35, 142]},
+//                {name: "舟山", "value": [122.207216, 29.985295, 123]}
+//            ]
+
+
+
+
+            [["测试上海",SHData],["测试广东",GZData]].forEach(function (item, i) {
                 console.log(item,i,"what???",item[0] )           //这里是BJData就是你需要联动描绘线条的点
                 series.push({
                         name: item[0] + ' Top10',
@@ -355,6 +385,7 @@
                         })
                     });
             });
+
 
             var bmapStyle={
                 styleJson: [
@@ -520,6 +551,7 @@
                     }]
             };
             option = {
+
                 backgroundColor: '#404a59',
                 title : {
                     text: '旅行路线',

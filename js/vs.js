@@ -269,74 +269,126 @@ var selectedAddress=null,addrGeo = new BMap.Geocoder();
 
 //设置江苏安徽山东的数据为空++
 
+console.log(new BMap.Geocoder(),"???????++++++++++++++++++++")  //百度地图的一个对象++++++++++++
+
 var jsData=null,sdData=null,ahData=null;
 
 //加载静态数据
+
 $.ajax({
     type: "get",
     url: "js/vmapDatah.json",
     dataType : "json",
     success: function(data){
-       hfData=data;     //拿到合肥的数据+++
-        console.log("合肥的数据+++",hfData)
+
+        hfData=data;     //拿到合肥的数据+++
+
+
+        // console.log("合肥的数据+++",hfData)
     },
     error:function(XMLHttpRequest, textStatus, errorThrown){
        console.log(XMLHttpRequest);
        console.log(textStatus);
        console.log(errorThrown);
     }
+
  });
 
-//开始描绘江苏数据+++
+//开始描绘江苏数据+++++++++++++++++++++++++++++++++++++++++++++++
 
 var drawJiangsu=function(){
+
     initMapStart=false;
+
     afterMapStart=true;
+
     series=[];
+
+    //这里分别声明了两个数组和两个常量++++++++++++++++++++++
+
     var jsGroup1=[],jsGroup2=[];
+
     var gap=1,gap1=1;
+
     $.ajax({
+
       type: "get",
       async:false,
       url: "js/jsData.json",
       success: function(data){
-         jsData=data;       //拿到江苏的数据++
+
+          jsData=data;       //拿到江苏的数据++
+
           console.log("江苏的数据+++",jsData)
+
       },
+
       error:function(XMLHttpRequest, textStatus, errorThrown){
       console.log(XMLHttpRequest);
       console.log(textStatus);
       console.log(errorThrown);
       }
-    }); 
+
+    });
+
     while(gap<1000){
 
       var dataArray1=[];
+
       gap=gap+60;
-      dataArray1.push(toObj2);
-      dataArray1.push(jsData[gap]);
-      JSData.push(dataArray1);
+
+      dataArray1.push(toObj2);          //  把一个空对象push到dataArray1中+++++++++++++++++++++++++ dataArray1=[{}]
+
+       // console.log(jsData[60],"++++++++++++++++++++++++++++++++++++++++随机抽出来几个数据")
+
+      dataArray1.push(jsData[gap]);     //将随机抽出来的数据，加入到dataArray1中++++++
+
+      JSData.push(dataArray1);         // 然后把这些数据作为江苏的数据++++，之后再描绘连线图表+++
+        //370行，可以查看+++++++++++
+
     }
-    var randomCust=[];
+//
+    var randomCust=[];                  //声明一个随机数组++++++++++++++
+
+
     for(var z=0;z<100;z++){
+
         var orderStart=Math.random()*2000;
+
         var step=Math.random()*100;
-        var nums=parseInt(orderStart+step);
-        randomCust.push(jsData[nums]);
+
+        var nums=parseInt(orderStart+step); //将两个随机数加起来向上取整数+++++++++++++++++
+
+        randomCust.push(jsData[nums]);         //随机取出jsData中的数据，然后push到randomCust中+++++++++++
+
+        //这里的作用暂时未知++++++++
+
     }
-    var mapgroup1=[],mapgroup2=[],mapgroup3=[];
+
+    var mapgroup1=[],mapgroup2=[],mapgroup3=[];     //声明了三个空数组
+
     for(var j=0;j<300;j++){
-        mapgroup1.push(jsData[j]);
+
+        mapgroup1.push(jsData[j]);  //这里频繁的对江苏的数据进行操作，随机生成几个数组
+
     };
+
     for(var k=300;k<800;k++){
         mapgroup2.push(jsData[k]);
-    }; 
+    };
+
     for(var l=800;l<jsData.length;l++){
         mapgroup3.push(jsData[l]);
-    }; 
-    [['江苏', JSData]].forEach(function (item, i){  
+    };
+
+   // JSData.push(dataArray1);         // 346行把随机数据赋值到JSdata中，然后把这些数据作为江苏的数据++++，之后再描绘连线图表+++
+
+    [['江苏', JSData]].forEach(function (item, i){
+
+        console.log(item,i,"what???",item[0] )           //这里是JSData就是你需要联动描绘线条的点
+
         series.push(
-               {  
+               {
                     name: '下单用户',  
                     type: 'effectScatter',   
                     coordinateSystem: 'bmap',  
@@ -364,13 +416,20 @@ var drawJiangsu=function(){
                             shadowColor: '#333'
                         }
                     }, 
-                    data: randomCust.map(function (dataItem) {  
-                        return {  
+                    data: randomCust.map(function (dataItem) {
+                        console.log()
+                        //这里是 将起止点联系起来++++
+                        return {
+
                             name: dataItem.shop_name,  
                             value: [dataItem.map_x,dataItem.map_y].concat([dataItem.cust_address])
+
+                            //concat将两个数组联系起来+++++
+
                         };  
                     })         
               }
+
 //              {  
 //                  name: item[0],  
 //                  type: 'lines',  
@@ -380,10 +439,10 @@ var drawJiangsu=function(){
 //                      show: true,  
 //                      period: 16,  
 //                      trailLength: 0.3,  
-//                      color: '#fff',  
-//                      symbolSize: 5  
+//                      color: '#fff',      //移动点的拖尾+++
+//                      symbolSize: 5       //移动点的大小
 //                  },  
-//                  lineStyle: {  
+//                  lineStyle: {             //迁移路线的宽度颜色，透明度相关配置
 //                      normal: {  
 //                          color: color[i],  
 //                          width: 0,  
@@ -414,10 +473,15 @@ var drawJiangsu=function(){
 //                  },  
 //                  data: convertData(item[1])  
 //               }
-             ); 
+             );
+
          });
+
+
+
       series.push(
-        {  
+
+         {
               name: '盱眙仓库',  
               type: 'effectScatter',  
               coordinateSystem: 'bmap',  
@@ -505,7 +569,8 @@ var drawJiangsu=function(){
                   value: [118.241233,34.377846]
               }]
          },
-         {  
+
+          {
               name: '新春兴冶炼厂',  
               type: 'effectScatter',  
               coordinateSystem: 'bmap',  
@@ -670,7 +735,7 @@ var drawJiangsu=function(){
 //                type: 'effectScatter',  
                 type: 'scatter', 
                 coordinateSystem: 'bmap',  
-                zlevel: 2,  
+                zlevel: 20,
 //                rippleEffect: {  
 //                    brushType: 'fill',
 //                    scale:5 
@@ -682,7 +747,7 @@ var drawJiangsu=function(){
                         formatter: '{b}'  
                     }  
                 },  
-                symbolSize: 10, 
+                symbolSize: 10,
 //                effect : {
 //                    show: true,
 //                    shadowBlur : 0
@@ -702,10 +767,13 @@ var drawJiangsu=function(){
                         color: 'rgba(37, 140, 249, 0.8)'
                     }
                 },
-                data: mapgroup1.map(function (dataItem) {  
+                data: mapgroup1.map(function (dataItem) {
+                   //这里是大量的散点数据++++++++++++++++++
+                     console.log([dataItem.map_x,dataItem.map_y].concat([dataItem.cust_address]),"+++++++++++++++++++++++++++++++++++++++++")
                     return {  
                         name: dataItem.shop_name,  
-                        value: [dataItem.map_x,dataItem.map_y].concat([dataItem.cust_address])
+                        value: [dataItem.map_x,dataItem.map_y,600].concat([dataItem.cust_address])
+
                     };  
                 })         
           },
@@ -726,8 +794,9 @@ var drawJiangsu=function(){
               itemStyle: {
                   normal: {
                       shadowBlur: 20,
-                      shadowColor: 'rgba(255, 255, 255, 0.8)',
-                      color: 'rgba(255, 255, 255, 0.8)'
+                      shadowColor: 'rgba(255, 255, 255, 0.2)',
+                      color: "rgba(255, 255, 255, 0.2)"
+                      // 'rgba(255, 255, 255, 0.8)'
                   }
               },
               data: mapgroup2.map(function (dataItem) {  
@@ -737,7 +806,7 @@ var drawJiangsu=function(){
                   };  
               })         
         },
-        {  
+          {
             name: '江苏用户',   
             type: 'scatter', 
             coordinateSystem: 'bmap',  
@@ -765,7 +834,16 @@ var drawJiangsu=function(){
                 };  
             })         
       }
+
+        //这里某一个具体的仓库和具体的冶炼厂，就是一个具体的数据，（经纬度），
+          //仓库至冶炼厂是写了两个具体的点===name是鼠标放置时候信息。
+
+          //这里某一地区的用户，他这里分成了三个中户，
+          //普通用户，下单用户，其他用户
+
+
       );
+    console.log(mapgroup1.map,"????啥玩意")
       var option = {  
           backgroundColor: '#404a59',  
           title : {  
@@ -794,13 +872,19 @@ var drawJiangsu=function(){
               mapStyle: bmapStyle
           },  
           series: series  
-      }; 
+      };
+
       myChart.clear();   
       myChart.setOption(option,true);
+
+
+
       var bmap=myChart.getModel().getComponent("bmap").getBMap();
+
       // myChart.on('click', function (params) {
       //     console.log(params);
       // });
+
       var steps=1;
       while(steps<5500){
         try //非IE
@@ -860,6 +944,8 @@ var drawJiangsu=function(){
                               itemStyle: {
                                   normal: {
                                       color: '#FA8695',
+
+                                      //这里是下单用户+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                                       shadowBlur: 10,
                                       shadowColor: '#333'
                                   }
@@ -1360,6 +1446,8 @@ var drawJiangsu=function(){
       },100);
   }
 
+//江苏数据描绘完成++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 //开始描绘安徽
 var drawAnhui=function(){
@@ -1380,6 +1468,7 @@ var drawAnhui=function(){
       console.log(errorThrown);
       }
     });
+
     while(gap<1000){
       var dataArray1=[];
       gap=gap+60;
@@ -1388,23 +1477,32 @@ var drawAnhui=function(){
       HFData.push(dataArray1);
     }
     var randomCust=[];
+
     for(var z=0;z<300;z++){
         var orderStart=Math.random()*2000;
         var step=Math.random()*100;
         var nums=parseInt(orderStart+step);
         randomCust.push(ahData[nums]);
     }
+
     console.log(randomCust);
+
+    //随机生成一部分数组
+
     var mapgroup1=[],mapgroup2=[],mapgroup3=[];
+
     for(var j=0;j<300;j++){
       mapgroup1.push(ahData[j]);
     };
+
     for(var k=300;k<800;k++){
       mapgroup2.push(ahData[k]);
-    }; 
+    };
+
     for(var l=800;l<ahData.length;l++){
       mapgroup3.push(ahData[l]);
-    }; 
+    };
+
     [['合肥', HFData]].forEach(function (item, i){  
         series.push(
                 {  
@@ -1445,6 +1543,7 @@ var drawAnhui=function(){
 //
               ); 
           });
+
       series.push(
         {  
               name: '蚌埠仓库',  
@@ -1897,6 +1996,7 @@ var drawAnhui=function(){
             })         
       }
       );
+
       var option = {  
           backgroundColor: '#404a59',  
           title : {  
@@ -1928,9 +2028,12 @@ var drawAnhui=function(){
       }; 
       myChart.clear();   
       myChart.setOption(option,true);
+
       var bmap=myChart.getModel().getComponent("bmap").getBMap();
+
       var steps=1;
       var ahGroup1=[],ahGroup2=[],ahGroup3=[];
+
       while(steps<9800){
         try //非IE
         {
@@ -1961,9 +2064,11 @@ var drawAnhui=function(){
           console.log(steps);
         }
       }
+
       console.log(ahGroup1.length);
       console.log(ahGroup2.length);
       console.log(ahGroup3.length);
+
       setTimeout(function(){
           series=[];
           var toCo1={},toCo2={},toCo3={};
@@ -2640,7 +2745,8 @@ var drawAnhui=function(){
   }
 
 
-  //开始描绘济南
+    //开始描绘济南+++++++++++++++++++++++
+    //加载山东的数据+++++++++++++++++++++++++++
 
  var drawJinan=function(){
     initMapStart=false;
@@ -2658,14 +2764,19 @@ var drawAnhui=function(){
       console.log(textStatus);
       console.log(errorThrown);
       }
-    }); 
+    });
+
     for(var i=0;i<50;i++){
       var dataArray=[];
       dataArray.push(toObj);
       dataArray.push(sdData[i]);
       JNData.push(dataArray);
     }
+
+     //随机生成一部分数组+++++++++++++++++++++++++
+
     var randomCust=[];
+
     for(var z=0;z<100;z++){
         var orderStart=Math.random()*2000;
         var step=Math.random()*100;
@@ -2681,7 +2792,8 @@ var drawAnhui=function(){
     }; 
     for(var l=1400;l<sdData.length;l++){
       mapgroup3.push(sdData[l]);
-    }; 
+    };
+
     series.push(
             {  
                 name: '下单用户',  
@@ -2899,14 +3011,20 @@ var drawAnhui=function(){
 
 
       var bmap=myChart.getModel().getComponent("bmap").getBMap();
-      bmap.addEventListener("zoomend", function(){    
+
+      bmap.addEventListener("zoomend", function(){
+
+          console.log("地图缩放了+++++++++++++++++++++++++++")
+
        if(this.getZoom()<8&&afterMapStart==true){
         myChart.clear();
           setTimeout(function(){
           drawAll(mapInfoDatas);
             initMap();
           },100);
-       } 
+       }
+
+
       })
   };
 
@@ -3036,7 +3154,7 @@ function initMap(){
  };
 
 
-//描绘所有的+++
+//描绘所有的+++，地图缩放时候就会重绘地图++++++++++++
 
 var drawAll=function(mapInfoDatas){
   var mids1=[],mids2=[],mids3=[];
@@ -3176,6 +3294,8 @@ var getUsersDatas=function(idx,func){//获取用户数据
 //          console.log(n);
 //        }
 //      });
+
+
 };
 //getUsersDatas(null,null);
 
@@ -3188,8 +3308,10 @@ var firstDone=function(){
    url: "js/vmapData.json",
    dataType : "json",
    success: function(data){
+
       var mapData=data,mapData1=null;
       var nums=parseInt(data.length/200);
+
       $.ajax({
        type: "get",
        url: "js/vmapDatah.json",
@@ -3204,9 +3326,12 @@ var firstDone=function(){
           console.log(errorThrown);
        }
       });
+
     }
   });
 }
+
+
 firstDone();
 
 
