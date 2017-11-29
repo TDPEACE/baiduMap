@@ -76,10 +76,13 @@ if (!Array.prototype.forEach) {
             k++;  
         }  
     };  
-} 
+}
+
 var planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';  
-var JNData = [],HFData=[],JSData=[]; 
-var toObj={};
+
+var JNData = [],HFData=[],JSData=[];
+
+
 var bmapStyle={
                     styleJson: [
                     {
@@ -243,27 +246,39 @@ var bmapStyle={
                               }
                     }]
                   };
-toObj.name='济南';
-var toObj1={},toObj2={};
-toObj1.name='合肥';
-toObj2.name='江苏';
-var vmapZoom=14;
-var initMapStart=false;
-var afterMapStart=false;
-var initMapClick=null;
-var series = [];  
-var mapData=null,mapData1=null;
-var mapDatas=null;
-var bmapCenter=[117.188107,34.271553];
+
+    var toObj={};
+    var toObj1={};
+    var toObj2={};
+    toObj.name='济南';
+    toObj1.name='合肥';
+    toObj2.name='江苏';
+
+var vmapZoom=14;        //地图缩放等级
+
+    var initMapStart=false;
+    var afterMapStart=false;
+    var initMapClick=null;
+    var series = [];
+    var mapData=null;
+    var mapData1=null;
+    var mapDatas=null;
+var bmapCenter=[117.188107,34.271553];  //地图中心点
+
 var selectedAddress=null,addrGeo = new BMap.Geocoder();
+
+//设置江苏安徽山东的数据为空++
+
 var jsData=null,sdData=null,ahData=null;
+
 //加载静态数据
 $.ajax({
     type: "get",
     url: "js/vmapDatah.json",
     dataType : "json",
     success: function(data){
-       hfData=data;
+       hfData=data;     //拿到合肥的数据+++
+        console.log("合肥的数据+++",hfData)
     },
     error:function(XMLHttpRequest, textStatus, errorThrown){
        console.log(XMLHttpRequest);
@@ -271,6 +286,8 @@ $.ajax({
        console.log(errorThrown);
     }
  });
+
+//开始描绘江苏数据+++
 
 var drawJiangsu=function(){
     initMapStart=false;
@@ -283,7 +300,8 @@ var drawJiangsu=function(){
       async:false,
       url: "js/jsData.json",
       success: function(data){
-         jsData=data;
+         jsData=data;       //拿到江苏的数据++
+          console.log("江苏的数据+++",jsData)
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
       console.log(XMLHttpRequest);
@@ -292,6 +310,7 @@ var drawJiangsu=function(){
       }
     }); 
     while(gap<1000){
+
       var dataArray1=[];
       gap=gap+60;
       dataArray1.push(toObj2);
@@ -1321,8 +1340,13 @@ var drawJiangsu=function(){
                 }; 
                 myChart.clear();   
                 myChart.setOption(option,true);
+
                 var bmap=myChart.getModel().getComponent("bmap").getBMap();
-                bmap.addEventListener("zoomend", function(){    
+
+          //对地图缩放进行控制+++++++++++++++
+
+                bmap.addEventListener("zoomend", function(){
+                    console.log("缩放开始，重绘地图+++++")
                     if(this.getZoom()<8&&afterMapStart==true){
                        myChart.clear();
                        setTimeout(function(){
@@ -1335,7 +1359,9 @@ var drawJiangsu=function(){
                 //检查点1
       },100);
   }
-  //描绘江苏
+
+
+//开始描绘安徽
 var drawAnhui=function(){
     initMapStart=false;
     afterMapStart=true;
@@ -2611,7 +2637,11 @@ var drawAnhui=function(){
       // myChart.on('click', function (params) {
       //     console.log(params);
       // });
-  }//描绘安徽
+  }
+
+
+  //开始描绘济南
+
  var drawJinan=function(){
     initMapStart=false;
     afterMapStart=true;
@@ -2862,9 +2892,12 @@ var drawAnhui=function(){
               mapStyle: bmapStyle
           },  
           series: series  
-      }; 
+      };
+
       myChart.clear();   
       myChart.setOption(option,true);
+
+
       var bmap=myChart.getModel().getComponent("bmap").getBMap();
       bmap.addEventListener("zoomend", function(){    
        if(this.getZoom()<8&&afterMapStart==true){
@@ -2876,6 +2909,8 @@ var drawAnhui=function(){
        } 
       })
   };
+
+
 function initMap(){
     initMapStart=true;
     afterMapStart=false;
@@ -2999,6 +3034,10 @@ function initMap(){
 //   };    
 //  });
  };
+
+
+//描绘所有的+++
+
 var drawAll=function(mapInfoDatas){
   var mids1=[],mids2=[],mids3=[];
   var datas=mapInfoDatas.rows;
@@ -3099,7 +3138,11 @@ var drawAll=function(mapInfoDatas){
        }
      );
 };
+
+
+
 var getUsersDatas=function(idx,func){//获取用户数据
+    console.log("11")
   var feedBack=func;
     var param=idx;
   var datas={};
@@ -3136,6 +3179,7 @@ var getUsersDatas=function(idx,func){//获取用户数据
 };
 //getUsersDatas(null,null);
 
+
 var firstDone=function(){
 
 
@@ -3151,7 +3195,7 @@ var firstDone=function(){
        url: "js/vmapDatah.json",
        dataType : "json",
        success: function(data){
-          mapData1=data;
+          mapData1=data;            //这里应该是重绘地图，存疑++++++++++++++++++++++++++++
           initMap();
        },
        error:function(XMLHttpRequest, textStatus, errorThrown){
@@ -3164,8 +3208,13 @@ var firstDone=function(){
   });
 }
 firstDone();
+
+
+
+
 //initMap();
       //省市区选择列表
+
   var getProvince=function(){//获取省
     $.ajax({
       async:false,

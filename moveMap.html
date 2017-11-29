@@ -56,7 +56,7 @@
 
             var dom = document.getElementById("moveMap");
             var myChart = echarts.init(dom);
-
+//要返回所有的点的坐标
             var geoCoordMap = {
                 '上海': [121.4648,31.2891],
                 '东莞': [113.8953,22.901],
@@ -173,6 +173,19 @@
                 '青岛': [120.4651,36.3373],
                 '韶关': [113.7964,24.7028]
             };
+    //返回有联系的点的坐标
+             var SHData = [
+                 [{name:'上海',value:120},{name:'包头',value:95}],
+                 [{name:'上海',value:120},{name:'昆明',value:90}],
+                 [{name:'上海',value:120},{name:'广州',value:80}],
+                 [{name:'上海',value:120},{name:'郑州',value:70}],
+                 [{name:'上海',value:120},{name:'长春',value:60}],
+                 [{name:'上海',value:120},{name:'重庆',value:50}],
+                 [{name:'上海',value:120},{name:'长沙',value:40}],
+                 [{name:'上海',value:120},{name:'北京',value:30}],
+                 [{name:'上海',value:120},{name:'丹东',value:20}],
+                 [{name:'上海',value:120},{name:'大连',value:10}]
+             ];
 
             var BJData = [
                 [{name:'成都'},{name:'潍坊',value:5}],
@@ -267,7 +280,8 @@
             var series = [];
             //这里测试者是自己定义的info，鼠标放置时显示,这个数组里面可以放置多个
 //            [['北京', BJData], ['上海', SHData], ['广州', GZData]].forEach()
-            [['测试者', BJData]].forEach(function (item, i) {
+
+            [['测试者', BJData],["测试上海",SHData]].forEach(function (item, i) {
                 console.log(item,i,"what???",item[0] )           //这里是BJData就是你需要联动描绘线条的点
                 series.push({
                         name: item[0] + ' Top10',
@@ -277,7 +291,7 @@
                             show: true,
                             period: 6,
                             trailLength: 0.7,
-                            color: '#fff',
+                            color: 'red',       //移动点的拖尾+++
                             symbolSize: 3
                         },
                         lineStyle: {
@@ -342,6 +356,169 @@
                     });
             });
 
+            var bmapStyle={
+                styleJson: [
+                    {
+                        'featureType': 'land',     //调整土地颜色
+                        'elementType': 'geometry',
+                        'stylers': {
+                            'color': '#081734'
+                        }
+                    },
+                    {
+                        'featureType': 'building',   //调整建筑物颜色
+                        'elementType': 'geometry',
+                        'stylers': {
+                            'color': '#04406F',
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'building',   //调整建筑物标签是否可视
+                        'elementType': 'labels',
+                        'stylers': {
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'highway',     //调整高速道路颜色
+                        'elementType': 'geometry',
+                        'stylers': {
+                            'color': '#015B99'
+                        }
+                    },
+                    {
+                        'featureType': 'highway',    //调整高速名字是否可视
+                        'elementType': 'labels',
+                        'stylers': {
+                            // 'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'arterial',   //调整一些干道颜色
+                        'elementType': 'geometry',
+                        'stylers': {
+                            'color':'#003051'
+                        }
+                    },
+                    {
+                        'featureType': 'arterial',
+                        'elementType': 'labels',
+                        'stylers': {
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'green',
+                        'elementType': 'geometry',
+                        'stylers': {
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'water',
+                        'elementType': 'geometry',
+                        'stylers': {
+                            'color': '#044161'
+                        }
+                    },
+                    {
+                        'featureType': 'subway',    //调整地铁颜色
+                        'elementType': 'geometry.stroke',
+                        'stylers': {
+                            'color': '#003051',
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'subway',
+                        'elementType': 'labels',
+                        'stylers': {
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'railway',
+                        'elementType': 'geometry',
+                        'stylers': {
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'railway',
+                        'elementType': 'labels',
+                        'stylers': {
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'all',     //调整所有的标签的边缘颜色
+                        'elementType': 'labels.text.stroke',
+                        'stylers': {
+                            'color': '#313131',
+                        }
+                    },
+                    {
+                        'featureType': 'all',     //调整所有标签的填充颜色
+                        'elementType': 'labels.text.fill',
+                        'stylers': {
+                            'color': '#FFFFFF',
+                        }
+                    },
+                    {
+                        'featureType': 'manmade',
+                        'elementType': 'geometry',
+                        'stylers': {
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'manmade',
+                        'elementType': 'labels',
+                        'stylers': {
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'local',
+                        'elementType': 'geometry',
+                        'stylers': {
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'local',
+                        'elementType': 'labels',
+                        'stylers': {
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'subway',
+                        'elementType': 'geometry',
+                        'stylers': {
+                            'lightness': -65,
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'railway',
+                        'elementType': 'all',
+                        'stylers': {
+                            'lightness': -40,
+                            'visibility': 'off'
+                        }
+                    },
+                    {
+                        'featureType': 'boundary',
+                        'elementType': 'geometry',
+                        'stylers': {
+                            'color': '#8b8787',
+                            'weight': '1',
+                            'lightness': -29
+                        }
+                    }]
+            };
             option = {
                 backgroundColor: '#404a59',
                 title : {
@@ -383,6 +560,12 @@
                         }
                     }
                 },
+                bmap: {
+                    center: [117.024967,36.682785], // bmapCenter=[117.024967,36.682785];
+                    zoom: 10,
+                    roam: true,
+                    mapStyle: bmapStyle             //改变地图风格+++++++++
+                },
                 series: series
             };
 
@@ -391,7 +574,9 @@
             }
 
             myChart.on("click",function (params) {
+
                 console.log(params,"params+++++")
+
             })
 
             //这里点击之后回返回数据点的迁移信息++++
