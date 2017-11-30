@@ -1043,8 +1043,12 @@ var drawJiangsu=function(){
                             },  
                             data: convertData1(toCo2,jsGroup2)  
                          }
+                         //这里是描绘什么数据的,某个点到仓库的数据+++++++++++++
+
                        ); 
                    });
+                 console.log(convertData1(toCo1,jsGroup1) ,"这些线数据+++++");
+
                 series.push(
                   {  
                         name: '盱眙仓库',  
@@ -1092,7 +1096,7 @@ var drawJiangsu=function(){
                     },
                     {  
                         name: '新沂仓库',  
-                        type: 'effectScatter',  
+                        type: 'effectScatter',      //这些都是点的数据。具体到某一个仓库
                         coordinateSystem: 'bmap',  
                         zlevel: 31,  
                         rippleEffect: {  
@@ -1179,7 +1183,7 @@ var drawJiangsu=function(){
                         }]
                     },
                     {  
-                        name: "仓库至冶炼厂",  
+                        name: "仓库至冶炼厂",  //具体到某一个仓库到冶炼厂
                         type: 'lines',  
                         coordinateSystem: 'bmap',  
                         zlevel: 4,  
@@ -1297,7 +1301,7 @@ var drawJiangsu=function(){
                     {  
                           name: '江苏用户',  
 //                        type: 'effectScatter',  
-                          type: 'scatter', 
+                          type: 'scatter',          //这些是某一种点，比如下单用户，正常用户，还有一些其他没有下单的用户++++++++
                           coordinateSystem: 'bmap',  
                           zlevel: 2,  
 //                        rippleEffect: {  
@@ -1331,7 +1335,7 @@ var drawJiangsu=function(){
                                   color: 'rgba(37, 140, 249, 0.8)'
                               }
                           },
-                          data: mapgroup1.map(function (dataItem) {  
+                          data: mapgroup1.map(function (dataItem) {         //data这里的数据等接上实际数据以后就是不需要再用虚拟数据了
                               return {  
                                   name: dataItem.shop_name,  
                                   value: [dataItem.map_x,dataItem.map_y].concat([dataItem.cust_address])
@@ -1360,7 +1364,7 @@ var drawJiangsu=function(){
                             }
                         },
                         data: mapgroup2.map(function (dataItem) {  
-                            return {  
+                            return {
                                 name: dataItem.shop_name,  
                                 value: [dataItem.map_x,dataItem.map_y].concat([dataItem.cust_address])
                             };  
@@ -1395,7 +1399,8 @@ var drawJiangsu=function(){
                       })         
                 }
                 );
-                var option = {  
+
+                var option = {
                     backgroundColor: '#404a59',  
                     title : {  
                         // text: '模拟迁徙',  
@@ -1427,18 +1432,22 @@ var drawJiangsu=function(){
                 myChart.clear();   
                 myChart.setOption(option,true);
 
-                var bmap=myChart.getModel().getComponent("bmap").getBMap();
+                var bmap=myChart.getModel().getComponent("bmap").getBMap();//这里应该是将echarts的暴露给baiduMap，
+          //baiduMap可以调用"zoomend"API
 
           //对地图缩放进行控制+++++++++++++++
 
                 bmap.addEventListener("zoomend", function(){
-                    console.log("缩放开始，重绘地图+++++")
+                    console.log("缩放开始，重绘地图+++++");
+
                     if(this.getZoom()<8&&afterMapStart==true){
                        myChart.clear();
                        setTimeout(function(){
+
                          series=[];
                          drawAll(mapInfoDatas);
                          initMap();
+
                        },100);
                     }  
                    });
