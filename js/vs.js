@@ -1437,15 +1437,18 @@ var drawJiangsu=function(){
 
           //对地图缩放进行控制+++++++++++++++
 
-                bmap.addEventListener("zoomend", function(){
+                bmap.addEventListener("zoomend", function(){    //一旦缩放级别小于8，重新渲染数据++++
                     console.log("缩放开始，重绘地图+++++");
 
                     if(this.getZoom()<8&&afterMapStart==true){
+
                        myChart.clear();
+
                        setTimeout(function(){
 
                          series=[];
-                         drawAll(mapInfoDatas);
+                         //drawAll(mapInfoDatas);//暂时注释，有真是数据以后放开++++++++++++++++
+                           drawAll();
                          initMap();
 
                        },100);
@@ -2742,7 +2745,8 @@ var drawAnhui=function(){
           if(this.getZoom()<8&&afterMapStart==true){
            myChart.clear();
              setTimeout(function(){
-               drawAll(mapInfoDatas);
+             //  drawAll(mapInfoDatas);     ---------------有真实数据的时候放开--------------
+                 drawAll();
                initMap();
              },100);
           }  
@@ -3028,7 +3032,8 @@ var drawAnhui=function(){
        if(this.getZoom()<8&&afterMapStart==true){
         myChart.clear();
           setTimeout(function(){
-          drawAll(mapInfoDatas);
+         // drawAll(mapInfoDatas);
+              drawAll();
             initMap();
           },100);
        }
@@ -3164,10 +3169,17 @@ function initMap(){
 
 
 //描绘所有的+++，地图缩放时候就会重绘地图++++++++++++
+    //这里的重绘地图是指重绘全国的数据，这里也是假数据+++++++++++++++++++++data里的假数据++++
+ //   var drawAll=function(mapInfoDatas){-------------这里暂时不进行传参，请求数据已经注释
+var drawAll=function(){
 
-var drawAll=function(mapInfoDatas){
+    console.log("???")
   var mids1=[],mids2=[],mids3=[];
+
+
+
   var datas=mapInfoDatas.rows;
+
   for(var i=0;i<8000;i++){
     mids1.push(datas[i]);
   }
@@ -3261,7 +3273,8 @@ var drawAll=function(mapInfoDatas){
                      name: dataItem.shop_name,  
                      value: [dataItem.map_x,dataItem.map_y].concat([dataItem.cust_address])
                  };  
-             })         
+             })
+
        }
      );
 };
@@ -3280,6 +3293,7 @@ var getUsersDatas=function(idx,func){//获取用户数据
     datas.areaId=param;
   }
   feedBack();
+  /*--+++++++++++++++++++++++++++++++++++++++++++这里是获取全国的数据点+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 //    $.ajax({
 //      async:true,
 //        type:"POST",
@@ -3348,6 +3362,7 @@ firstDone();
 
 //initMap();
       //省市区选择列表
+
 
   var getProvince=function(){//获取省
     $.ajax({
