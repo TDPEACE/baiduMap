@@ -1047,7 +1047,7 @@ var drawJiangsu=function(){
 
                        ); 
                    });
-                 console.log(convertData1(toCo1,jsGroup1) ,"这些线数据+++++");
+                console.log(convertData1(toCo1,jsGroup1) ,"这些线数据+++++");
 
                 series.push(
                   {  
