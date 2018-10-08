@@ -21,6 +21,7 @@
     精度: <input id="longitude" type="text" style="width:100px; margin-right:10px;" />
     纬度: <input id="latitude" type="text" style="width:100px; margin-right:10px;" />
     <input type="button" value="查找" onclick="theLocation()" />
+    <img src="http://tmp/wxd2a3ee77d9da9b1c.o6zAJs6SfRHlOoIK-faoiCjaVHTk.yKNjLNa1WbyX457524a29f7dff70873f57d94299044f.jpg" alt="">
 </div>
 </body>
 <script type="text/javascript">
@@ -30,21 +31,13 @@
         setMapEvent();//设置地图事件
         addMapControl();//向地图添加控件
     }
-
     //创建地图函数：
     function createMap(){
         var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
         var point = new BMap.Point(116.395645,39.929986);//定义一个中心点坐标
         map.centerAndZoom(point,12);//设定地图的中心点和坐标并将地图显示在地图容器中
-
-
-
-
-
         window.map = map;//将map变量存储在全局
     }
-
-
     //地图事件设置函数：
     function setMapEvent(){
         map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
@@ -78,7 +71,6 @@
             map.setZoom(10);
             //map.setZoom(map.getZoom() + 2);
         }
-
     }
     setTimeout(theLocation(),500)
 
