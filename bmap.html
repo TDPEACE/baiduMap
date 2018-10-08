@@ -87,11 +87,6 @@ var map = new BMap.Map("allmap");
 map.centerAndZoom(new BMap.Point(116.331398,39.897445),11);
 map.enableScrollWheelZoom(true);
 // 编写自定义函数,创建标注
-
-
-
-
-
     var data = [
 
         {custId: 73, custName: "吕军强", custPhone: "15511097555", mapX: 116.203169, mapY: 33.503044},
@@ -132,8 +127,6 @@ map.enableScrollWheelZoom(true);
 
     ];
 
-
-
 var MAX = 10;
 var markers = [];
 //var marker=[];
@@ -147,21 +140,16 @@ for (; i < data.length; i++) {
 
    /*  point = new BMap.Point(data[i].mapX, data[i].mapY); //循环生成新的地图点
      marker = new BMap.Marker(point); //按照地图点坐标生成标记
-
-
      */
 
 }
 //最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
 var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
 
-
 // 百度地图API功能
 /*var map = new BMap.Map("allmap");
 map.centerAndZoom(new BMap.Point(116.404, 39.915), 5);
 map.enableScrollWheelZoom();
-
-
 
 var markers = [];
 var pt = null;
@@ -179,10 +167,6 @@ function fn_test2() {
 }
 fn_test2()*/
 
-
-
-
-
 /*
 var opts = {
     width : 250,     // 信息窗口宽度
@@ -190,12 +174,10 @@ var opts = {
     title : "信息窗口" , // 信息窗口标题
     enableMessage:true//设置允许信息窗发送短息
 };
-
 var myIcon = new BMap.Icon("/images/home/stroe2.png", new BMap.Size(100, 100), {
     anchor: new BMap.Size(10, 10),				//这里是定位点距离图片左上角的偏移量。默认图片中心点作为anchor位置
     infoWindowAnchor: new BMap.Size(10, 0)		//这里是打开info窗口的位置
 });//用于自定义图片
-
 
     for (var i = 0; i < data.length; i++) {
         var point = new BMap.Point(data[i].mapX, data[i].mapY); //循环生成新的地图点
@@ -204,12 +186,9 @@ var myIcon = new BMap.Icon("/images/home/stroe2.png", new BMap.Size(100, 100), {
         map.addOverlay(markerArr);
         content = data[i].address
         addClickHandler(content,markerArr);
-
     }
 
 //点击当前点之后出现信息提示框+++++++++++
-
-
  function addClickHandler(content,markerArr){
             markerArr.addEventListener("click",function(e){
 						        openInfo(content,e)}
@@ -223,12 +202,6 @@ function openInfo(content,e){
     map.openInfoWindow(infoWindow,point); //开启信息窗口
 }
 */
-
-
-
-
-
-
 
 // 用经纬度设置地图中心点
 function theLocation(){
@@ -248,9 +221,6 @@ function theLocation(){
 }
 //var marker = new BMap.Marker(new BMap.Point(116.404, 39.915)); // 创建点
 
-
-
-
   /*  // 用经纬度设置地图中心点
     function theLocation(){
         if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
@@ -266,15 +236,6 @@ function theLocation(){
 
         }
     }*/
-
-
-
-
-
-
-
-
-
 
 //<!--地图缩放++地图移动++获取地图中心点并向后台发送请求-->
 /* map.addEventListener('dragend', function(){
@@ -292,13 +253,6 @@ function theLocation(){
     initMap();
 }); */
 
-
-
-
-
-
-
-
 //添加海量点+++++++++++++++++++++++++++
 
 /*if (document.createElement('canvas').getContext) {  // 判断当前浏览器是否支持绘制海量点
@@ -315,13 +269,7 @@ function theLocation(){
     }
 
     pointCollection = new BMap.PointCollection(points, options);  // 初始化PointCollection
-
-
-
     map.addOverlay(pointCollection);  // 添加Overlay*/
-
-
-
 //点击坐标点之后出现提示信息
 
 /*
@@ -334,10 +282,7 @@ var opts = {
 
 var content = data[i].address;//点击点出现的内容
 
-
 addClickHandler(content,marker);//给点添加点击事件，点渲染之后执行这个函数
-
-
 function addClickHandler(content,marker){
     marker.addEventListener("click",function(e){
         openInfo(content,e)}
@@ -349,15 +294,6 @@ function openInfo(content,e){
     var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
     map.openInfoWindow(infoWindow,point); //开启信息窗口
 }*/
-
-
-
-
-
-
-
-
-
 
 
 var opts = {
@@ -385,10 +321,6 @@ for(var i=0;i<data.length;i++) {
 //addClickHandler(content,marker);
 
 }
-
-
-
-
 
 
 </script>
