@@ -53,7 +53,6 @@ app.controller("myEchart",function($scope){
                         sh = setInterval(slide,4000);
                     })
 
-
                 },0)
 
             }
