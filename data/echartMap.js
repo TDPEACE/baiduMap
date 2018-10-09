@@ -1,3 +1,4 @@
+
 (function () {
     // 'use strict';
 
@@ -7,17 +8,11 @@ angular.module("myApp",[])
 
 function myEchart($scope) {
 
-    $scope.a = 1;
-    console.log($scope.a,"+++++++++")
-
-
     var dom = document.getElementById("day_order");
     var myChart = echarts.init(dom);
     var app = {};
     option = null;
     app.title = '嵌套环形图';
-
-
     option = {
         tooltip: {
             trigger: 'item',
@@ -604,7 +599,5 @@ function myEchart($scope) {
     if (option9 && typeof option9 === "object") {
         myChart9.setOption(option9, true);
     }
-
-
 }
 })();
