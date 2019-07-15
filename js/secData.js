@@ -31,9 +31,8 @@
             url: "js/listData.json",
             dataType : "json",
             success: function(data){
-                //这里我在取数据的时候一直报错，原因是JSON数据多了一个点。尼玛；
+                //这里我在取数据的时候一直报错，原因是JSON数据多了一个点
                 for(var i=0;i<data.length;i++){
-                    console.log("++++++++++++++++++")
                   /*  if(data[i].type=="新订单"){
                         var type_li="<li>"+data[i].type+"</li>";
                         $("#vtype").find("ul").append(type_li);
@@ -48,7 +47,6 @@
                     // $("#vasset").find("ul").append("<li>"+data[i].price+"</li>");
                 }
                 orderMove();
-                // playCam();
             },
             error:function(XMLHttpRequest, textStatus, errorThrown){
                 console.log(XMLHttpRequest);
@@ -56,7 +54,7 @@
                 console.log(errorThrown);
             }
         });
-//车辆仓库之类的柱状图
+        //车辆仓库之类的柱状图
         var myChart = echarts.init(document.getElementById('data_search'));
         // app.title = '坐标轴刻度与标签对齐';
 
