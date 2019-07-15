@@ -3,12 +3,10 @@
         .controller("secData",secData);
     secData.$inject=["$scope"];
     function secData($scope) {
-        $scope.a = 1;
-        console.log($scope.a,"+++++++++++++++++++++++");
-        console.log("mycharts+++++++++++++");
-        //一直报错解析不了App,出现两次了+++++++++++++++++++
-        //因为末尾没有执行这个闭包++mad
-        console.log($(window).height(),$(window).width(),"+++++++++++++++++打印浏览器宽高")
+        
+        //一直报错解析不了App,出现两次了
+        //因为末尾没有执行这个闭包
+        console.log($(window).height(),$(window).width(),"打印浏览器宽高")
 
         //第一个无缝滚送
         function orderMove(){
