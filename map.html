@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <meta name="keywords" content="°Ù¶ÈµØÍ¼,°Ù¶ÈµØÍ¼API£¬°Ù¶ÈµØÍ¼×Ô¶¨Òå¹¤¾ß£¬°Ù¶ÈµØÍ¼Ëù¼û¼´ËùµÃ¹¤¾ß" />
-    <meta name="description" content="°Ù¶ÈµØÍ¼API×Ô¶¨ÒåµØÍ¼£¬°ïÖúÓÃ»§ÔÚ¿ÉÊÓ»¯²Ù×÷ÏÂÉú³É°Ù¶ÈµØÍ¼" />
-    <title>°Ù¶ÈµØÍ¼API×Ô¶¨ÒåµØÍ¼</title>
-    <!--ÒýÓÃ°Ù¶ÈµØÍ¼API-->
+    <meta name="keywords" content="ï¿½Ù¶Èµï¿½Í¼,ï¿½Ù¶Èµï¿½Í¼APIï¿½ï¿½ï¿½Ù¶Èµï¿½Í¼ï¿½Ô¶ï¿½ï¿½å¹¤ï¿½ß£ï¿½ï¿½Ù¶Èµï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½" />
+    <meta name="description" content="ï¿½Ù¶Èµï¿½Í¼APIï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ú¿ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É°Ù¶Èµï¿½Í¼" />
+    <title>ï¿½Ù¶Èµï¿½Í¼APIï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Í¼</title>
+    <!--ï¿½ï¿½ï¿½Ã°Ù¶Èµï¿½Í¼API-->
     <style type="text/css">
         html,body{margin:0;padding:0;}
         .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
@@ -15,50 +15,50 @@
 </head>
 
 <body>
-<!--°Ù¶ÈµØÍ¼ÈÝÆ÷-->
+<!--ï¿½Ù¶Èµï¿½Í¼ï¿½ï¿½ï¿½ï¿½-->
 <div style="width:697px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
 <div id="r-result">
-    ¾«¶È: <input id="longitude" type="text" style="width:100px; margin-right:10px;" />
-    Î³¶È: <input id="latitude" type="text" style="width:100px; margin-right:10px;" />
-    <input type="button" value="²éÕÒ" onclick="theLocation()" />
+    ï¿½ï¿½ï¿½ï¿½: <input id="longitude" type="text" style="width:100px; margin-right:10px;" />
+    Î³ï¿½ï¿½: <input id="latitude" type="text" style="width:100px; margin-right:10px;" />
+    <input type="button" value="ï¿½ï¿½ï¿½ï¿½" onclick="theLocation()" />
     <img src="http://tmp/wxd2a3ee77d9da9b1c.o6zAJs6SfRHlOoIK-faoiCjaVHTk.yKNjLNa1WbyX457524a29f7dff70873f57d94299044f.jpg" alt="">
 </div>
 </body>
 <script type="text/javascript">
-    //´´½¨ºÍ³õÊ¼»¯µØÍ¼º¯Êý£º
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     function initMap(){
-        createMap();//´´½¨µØÍ¼
-        setMapEvent();//ÉèÖÃµØÍ¼ÊÂ¼þ
-        addMapControl();//ÏòµØÍ¼Ìí¼Ó¿Ø¼þ
+        createMap();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼
+        setMapEvent();//ï¿½ï¿½ï¿½Ãµï¿½Í¼ï¿½Â¼ï¿½
+        addMapControl();//ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Ó¿Ø¼ï¿½
     }
-    //´´½¨µØÍ¼º¯Êý£º
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     function createMap(){
-        var map = new BMap.Map("dituContent");//ÔÚ°Ù¶ÈµØÍ¼ÈÝÆ÷ÖÐ´´½¨Ò»¸öµØÍ¼
-        var point = new BMap.Point(116.395645,39.929986);//¶¨ÒåÒ»¸öÖÐÐÄµã×ø±ê
-        map.centerAndZoom(point,12);//Éè¶¨µØÍ¼µÄÖÐÐÄµãºÍ×ø±ê²¢½«µØÍ¼ÏÔÊ¾ÔÚµØÍ¼ÈÝÆ÷ÖÐ
-        window.map = map;//½«map±äÁ¿´æ´¢ÔÚÈ«¾Ö
+        var map = new BMap.Map("dituContent");//ï¿½Ú°Ù¶Èµï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Í¼
+        var point = new BMap.Point(116.395645,39.929986);//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½
+        map.centerAndZoom(point,12);//ï¿½è¶¨ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ê²¢ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ê¾ï¿½Úµï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        window.map = map;//ï¿½ï¿½mapï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½È«ï¿½ï¿½
     }
-    //µØÍ¼ÊÂ¼þÉèÖÃº¯Êý£º
+    //ï¿½ï¿½Í¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï¿½
     function setMapEvent(){
-        map.enableDragging();//ÆôÓÃµØÍ¼ÍÏ×§ÊÂ¼þ£¬Ä¬ÈÏÆôÓÃ(¿É²»Ð´)
-        map.enableScrollWheelZoom();//ÆôÓÃµØÍ¼¹öÂÖ·Å´óËõÐ¡
-        map.enableDoubleClickZoom();//ÆôÓÃÊó±êË«»÷·Å´ó£¬Ä¬ÈÏÆôÓÃ(¿É²»Ð´)
-        map.enableKeyboard();//ÆôÓÃ¼üÅÌÉÏÏÂ×óÓÒ¼üÒÆ¶¯µØÍ¼
+        map.enableDragging();//ï¿½ï¿½ï¿½Ãµï¿½Í¼ï¿½ï¿½×§ï¿½Â¼ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½É²ï¿½Ð´)
+        map.enableScrollWheelZoom();//ï¿½ï¿½ï¿½Ãµï¿½Í¼ï¿½ï¿½ï¿½Ö·Å´ï¿½ï¿½ï¿½Ð¡
+        map.enableDoubleClickZoom();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë«ï¿½ï¿½ï¿½Å´ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½É²ï¿½Ð´)
+        map.enableKeyboard();//ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½Í¼
     }
 
-    //µØÍ¼¿Ø¼þÌí¼Óº¯Êý£º
+    //ï¿½ï¿½Í¼ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½Óºï¿½ï¿½ï¿½ï¿½ï¿½
     function addMapControl(){
-        //ÏòµØÍ¼ÖÐÌí¼ÓËõ·Å¿Ø¼þ
+        //ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¿Ø¼ï¿½
         var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
         map.addControl(ctrl_nav);
-        //ÏòµØÍ¼ÖÐÌí¼ÓËõÂÔÍ¼¿Ø¼þ
+        //ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Ø¼ï¿½
         var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});
         map.addControl(ctrl_ove);
-        //ÏòµØÍ¼ÖÐÌí¼Ó±ÈÀý³ß¿Ø¼þ
+        //ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Ó±ï¿½ï¿½ï¿½ï¿½ß¿Ø¼ï¿½
         var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
         map.addControl(ctrl_sca);
     }
-    //¶¨Î»
+    //ï¿½ï¿½Î»
     function theLocation(){
         if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
             map.clearOverlays();
@@ -73,7 +73,6 @@
         }
     }
     setTimeout(theLocation(),500)
-
-    initMap();//´´½¨ºÍ³õÊ¼»¯µØÍ¼
+    initMap();//ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Í¼
 </script>
 </html>
